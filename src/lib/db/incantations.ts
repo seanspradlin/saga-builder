@@ -1,5 +1,3 @@
-import { attackRoles } from './roles';
-
 /**
  * Sourced from The Strelitzia Inn
  * https://thaao.net/sagasca/character/?p=jutsu
