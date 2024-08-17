@@ -1,3 +1,7 @@
+/**
+ * Sourced from the Saga Fandom Wiki
+ * https://saga.fandom.com/wiki/List_of_SaGa_Scarlet_Grace_roles
+ */
 export const characterRoles = [
 	{
 		id: 'novice-duelist',
