@@ -2,7 +2,18 @@
  * Sourced from The Strelitzia Inn
  * https://thaao.net/sagasca/character/?p=jutsu
  */
-export const natura = [
+
+export interface Incantation {
+	id: string;
+	name: string;
+	cost: number;
+	target: string;
+	tier: number;
+	attributes: string[];
+	effect?: string;
+	skill: string[];
+}
+export const natura: Incantation[] = [
 	{
 		id: 'thorny-fetters',
 		name: 'Thorny Fetters',
@@ -29,7 +40,8 @@ export const natura = [
 		tier: 3,
 		attributes: ['Lightning'],
 		target: 'All enemies',
-		effect: 'Paralyze'
+		effect: 'Paralyze',
+		skill: ['int']
 	},
 	{
 		id: 'tailwind',
@@ -43,7 +55,7 @@ export const natura = [
 	}
 ];
 
-export const ignis = [
+export const ignis: Incantation[] = [
 	{
 		id: 'blazing-rush',
 		name: 'Blazing Rush',
@@ -86,7 +98,7 @@ export const ignis = [
 	}
 ];
 
-export const terra = [
+export const terra: Incantation[] = [
 	{
 		id: 'hypergravity',
 		name: 'Hypergravity',
@@ -129,7 +141,7 @@ export const terra = [
 	}
 ];
 
-export const aes = [
+export const aes: Incantation[] = [
 	{
 		id: 'holy-grail',
 		name: 'Holy Grail',
@@ -172,7 +184,7 @@ export const aes = [
 	}
 ];
 
-export const unda = [
+export const unda: Incantation[] = [
 	{
 		id: 'poisonous-mist',
 		name: 'Poisonous Mist',
@@ -214,3 +226,21 @@ export const unda = [
 		skill: ['int', 'acu']
 	}
 ];
+
+export type ExtendedIncantation = Incantation & { type: string };
+export const incantations: { [key: string]: ExtendedIncantation } = {};
+natura.forEach((incantation) => {
+	incantations[incantation.id] = { ...incantation, type: 'natura' };
+});
+ignis.forEach((incantation) => {
+	incantations[incantation.id] = { ...incantation, type: 'ignis' };
+});
+terra.forEach((incantation) => {
+	incantations[incantation.id] = { ...incantation, type: 'terra' };
+});
+aes.forEach((incantation) => {
+	incantations[incantation.id] = { ...incantation, type: 'aes' };
+});
+unda.forEach((incantation) => {
+	incantations[incantation.id] = { ...incantation, type: 'unda' };
+});

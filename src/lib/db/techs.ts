@@ -3,7 +3,20 @@
  * https://saga.fandom.com/wiki/List_of_SaGa_Scarlet_Grace_techs
  */
 
-export const greatsword = [
+export interface Tech {
+	id: string;
+	name: string;
+	description: string;
+	cost: number;
+	target: string;
+	attributes: string[];
+	ranged: boolean;
+	conditionals: string[];
+	effect: string;
+	skill: string[];
+}
+
+export const greatsword: Tech[] = [
 	{
 		id: 'smash',
 		name: 'Smash',
@@ -202,7 +215,7 @@ export const greatsword = [
 	}
 ];
 
-export const sword = [
+export const sword: Tech[] = [
 	{
 		id: 'sonic-slash',
 		name: 'Sonic Slash',
@@ -363,7 +376,7 @@ export const sword = [
 		ranged: false,
 		conditionals: [],
 		effect: 'Effective Against Undead',
-		skill: 'Str'
+		skill: ['str']
 	},
 	{
 		id: 'divide',
@@ -376,11 +389,11 @@ export const sword = [
 		ranged: false,
 		conditionals: [],
 		effect: 'Death',
-		skill: 'Int'
+		skill: ['int']
 	}
 ];
 
-export const twinSwords = [
+export const twinSwords: Tech[] = [
 	{
 		id: 'dual-cross-cut',
 		name: 'Dual Cross Cut',
@@ -414,12 +427,13 @@ export const twinSwords = [
 		target: 'Single',
 		attributes: ['Pierce'],
 		ranged: false,
+		effect: 'None',
 		conditionals: ['Interrupt', 'Slash'],
 		skill: ['str', 'dex']
 	}
 ];
 
-export const shortsword = [
+export const shortSword: Tech[] = [
 	{
 		id: 'quick-thrust',
 		name: 'Quick Thrust',
@@ -570,7 +584,7 @@ export const shortsword = [
 	}
 ];
 
-export const spear = [
+export const spear: Tech[] = [
 	{
 		id: 'pierce',
 		name: 'Pierce',
@@ -732,7 +746,7 @@ export const spear = [
 	}
 ];
 
-export const axe = [
+export const axe: Tech[] = [
 	{
 		id: 'treecleaver',
 		name: 'Treecleaver',
@@ -830,7 +844,7 @@ export const axe = [
 		skill: ['str']
 	},
 	{
-		id: 'hell-fury',
+		id: 'hell-s-fury',
 		name: "Hell's Fury",
 		description: 'Interrupt a blunt attack, dealing damage in retribution.',
 		cost: 7,
@@ -881,7 +895,7 @@ export const axe = [
 	}
 ];
 
-export const club = [
+export const club: Tech[] = [
 	{
 		id: 'roundhouse',
 		name: 'Roundhouse',
@@ -1033,7 +1047,7 @@ export const club = [
 	}
 ];
 
-export const bow = [
+export const bow: Tech[] = [
 	{
 		id: 'aimed-shot',
 		name: 'Aimed Shot',
@@ -1183,7 +1197,7 @@ export const bow = [
 	}
 ];
 
-export const martialArts = [
+export const martialArts: Tech[] = [
 	{
 		id: 'punch',
 		name: 'Punch',
@@ -1334,7 +1348,7 @@ export const martialArts = [
 	}
 ];
 
-export const staff = [
+export const staff: Tech[] = [
 	{
 		id: 'focusing-strike',
 		name: 'Focusing Strike',
@@ -1372,3 +1386,36 @@ export const staff = [
 		skill: ['str', 'acu']
 	}
 ];
+
+export type ExtendedTech = Tech & { type: string };
+export const techs: { [key: string]: ExtendedTech } = {};
+greatsword.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'greatsword' };
+});
+sword.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'sword' };
+});
+twinSwords.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'twinSwords' };
+});
+shortSword.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'shortSword' };
+});
+spear.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'spear' };
+});
+axe.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'axe' };
+});
+club.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'club' };
+});
+bow.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'bow' };
+});
+martialArts.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'martialArts' };
+});
+staff.forEach((tech) => {
+	techs[tech.id] = { ...tech, type: 'staff' };
+});

@@ -2,7 +2,23 @@
  * Sourced from the Saga Fandom Wiki
  * https://saga.fandom.com/wiki/List_of_SaGa_Scarlet_Grace_roles
  */
-export const characterRoles = [
+
+export interface Role {
+	id: string;
+	role: string;
+	description: string;
+}
+
+export interface CharacterRole extends Role {
+	character: string;
+	notes?: string;
+}
+
+export interface LearnableRole extends Role {
+	requiredTechs: string[];
+}
+
+export const characterRoles: CharacterRole[] = [
 	{
 		id: 'novice-duelist',
 		character: 'Urpina',
@@ -468,7 +484,7 @@ export const characterRoles = [
 	}
 ];
 
-export const attackRoles = [
+export const attackRoles: LearnableRole[] = [
 	{
 		id: 'champion-duelist',
 		role: 'Champion Duelist',
@@ -555,7 +571,7 @@ export const attackRoles = [
 	}
 ];
 
-export const positioningRoles = [
+export const positioningRoles: LearnableRole[] = [
 	{
 		id: 'the-nimble',
 		role: 'The Nimble',
@@ -576,7 +592,7 @@ export const positioningRoles = [
 	}
 ];
 
-export const accuracyRoles = [
+export const accuracyRoles: LearnableRole[] = [
 	{
 		id: 'sniper',
 		role: 'Sniper',
@@ -597,7 +613,7 @@ export const accuracyRoles = [
 	}
 ];
 
-export const bpBoostingRoles = [
+export const bpBoostingRoles: LearnableRole[] = [
 	{
 		id: 'commander',
 		role: 'Commander',
@@ -624,7 +640,7 @@ export const bpBoostingRoles = [
 	}
 ];
 
-export const resistanceRoles = [
+export const resistanceRoles: LearnableRole[] = [
 	{
 		id: 'iron-wall',
 		role: 'Iron Wall',
@@ -705,7 +721,7 @@ export const resistanceRoles = [
 	}
 ];
 
-export const shieldRoles = [
+export const shieldRoles: LearnableRole[] = [
 	{
 		id: 'riposter',
 		role: 'Riposter',
@@ -738,7 +754,7 @@ export const shieldRoles = [
 	}
 ];
 
-export const targetingRoles = [
+export const targetingRoles: LearnableRole[] = [
 	{
 		id: 'ambusher',
 		role: 'Ambusher',
@@ -777,7 +793,7 @@ export const targetingRoles = [
 	}
 ];
 
-export const delayRoles = [
+export const delayRoles: LearnableRole[] = [
 	{
 		id: 'the-discordant',
 		role: 'The Discordant',
@@ -792,7 +808,7 @@ export const delayRoles = [
 	}
 ];
 
-export const ailmentResistanceRoles = [
+export const ailmentResistanceRoles: LearnableRole[] = [
 	{
 		id: 'the-unrelenting',
 		role: 'The Unrelenting',
@@ -861,7 +877,7 @@ export const ailmentResistanceRoles = [
 	}
 ];
 
-export const statusBoostingRoles = [
+export const statusBoostingRoles: LearnableRole[] = [
 	{
 		id: 'the-quick',
 		role: 'The Quick',
@@ -894,7 +910,7 @@ export const statusBoostingRoles = [
 	}
 ];
 
-export const attributeBoostingRoles = [
+export const attributeBoostingRoles: LearnableRole[] = [
 	{
 		id: 'martial-artist',
 		role: 'Martial Artist',
@@ -975,7 +991,7 @@ export const attributeBoostingRoles = [
 	}
 ];
 
-export const benisonRoles = [
+export const benisonRoles: LearnableRole[] = [
 	{
 		id: 'rule-of-law',
 		role: 'The Rule of Law',
@@ -1050,7 +1066,7 @@ export const benisonRoles = [
 	}
 ];
 
-export const miscRoles = [
+export const miscRoles: LearnableRole[] = [
 	{
 		id: 'exemplar',
 		role: 'Exemplar',
