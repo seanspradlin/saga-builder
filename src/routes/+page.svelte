@@ -1,7 +1,7 @@
 <script lang="ts">
-	import * as Roles from '$lib/db/roles';
-	import { techs, type ExtendedTech } from '$lib/db/techs';
-	import { incantations, type ExtendedIncantation } from '$lib/db/incantations';
+	import * as Roles from '$lib/data/roles';
+	import { techs, type ExtendedTech } from '$lib/data/techs';
+	import { incantations, type ExtendedIncantation } from '$lib/data/incantations';
 
 	const characterNames = Array.from(
 		new Set(Roles.characterRoles.map((role) => role.character).sort())
