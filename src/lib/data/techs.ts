@@ -4,6 +4,17 @@
  */
 
 export interface Tech {
+	type:
+		| 'greatsword'
+		| 'sword'
+		| 'twinSwords'
+		| 'shortsword'
+		| 'spear'
+		| 'axe'
+		| 'club'
+		| 'bow'
+		| 'martialArts'
+		| 'staff';
 	id: string;
 	name: string;
 	description: string;
@@ -16,8 +27,9 @@ export interface Tech {
 	skill: string[];
 }
 
-export const greatsword: Tech[] = [
+export const techs: Tech[] = [
 	{
+		type: 'greatsword',
 		id: 'smash',
 		name: 'Smash',
 		description: 'Smash a target from above, provoking it.',
@@ -30,6 +42,7 @@ export const greatsword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'greatsword',
 		id: 'deflect',
 		name: 'Deflect',
 		description: 'Protect an ally against attacks. Greatly increases block chance.',
@@ -42,6 +55,7 @@ export const greatsword: Tech[] = [
 		skill: ['dex', 'mob']
 	},
 	{
+		type: 'greatsword',
 		id: 'blizzard',
 		name: 'Blizzard',
 		description:
@@ -55,6 +69,7 @@ export const greatsword: Tech[] = [
 		skill: ['str', 'dex']
 	},
 	{
+		type: 'greatsword',
 		id: 'flowing-slash',
 		name: 'Flowing Slash',
 		description: 'Gracefully slash a target, decreasing its attack power.',
@@ -67,6 +82,7 @@ export const greatsword: Tech[] = [
 		skill: ['str', 'dex']
 	},
 	{
+		type: 'greatsword',
 		id: 'downswing',
 		name: 'Downswing',
 		description: 'Raise your greatsword high in the air and bring it to bear on your target.',
@@ -79,6 +95,7 @@ export const greatsword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'greatsword',
 		id: 'optical-slash',
 		name: 'Optical Slash',
 		description:
@@ -92,6 +109,7 @@ export const greatsword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'greatsword',
 		id: 'lunar-blade',
 		name: 'Lunar Blade',
 		description: 'Lunge nimbly at your foe with the moon at your back.',
@@ -104,6 +122,7 @@ export const greatsword: Tech[] = [
 		skill: ['str', 'dex']
 	},
 	{
+		type: 'greatsword',
 		id: 'gravedigger',
 		name: 'Gravedigger',
 		description: 'Ranged attack. Emit a ground-based wave to assault a target.',
@@ -116,6 +135,7 @@ export const greatsword: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'greatsword',
 		id: 'headwind-rush',
 		name: 'Headwind Rush',
 		description: 'Barrel toward a foe, delaying it.',
@@ -128,6 +148,7 @@ export const greatsword: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'greatsword',
 		id: 'vandalize',
 		name: 'Vandalize',
 		description: 'Sunder a target in twain.',
@@ -140,6 +161,7 @@ export const greatsword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'greatsword',
 		id: 'shadow-reversal',
 		name: 'Shadow Reversal',
 		description: 'Interrupt a slashing attack, occasionally stunning the target.',
@@ -152,6 +174,7 @@ export const greatsword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'greatsword',
 		id: 'eclipse',
 		name: 'Eclipse',
 		description: 'Unleash a powerful blow. Increases your block chance until you act.',
@@ -164,6 +187,7 @@ export const greatsword: Tech[] = [
 		skill: ['str', 'dex']
 	},
 	{
+		type: 'greatsword',
 		id: 'wheel-swing',
 		name: 'Wheel Swing',
 		description: 'Area attack. Swing your blade in an arc to create winds that buffet foes.',
@@ -176,6 +200,7 @@ export const greatsword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'greatsword',
 		id: 'scattered-petals',
 		name: 'Scattered Petals',
 		description:
@@ -189,6 +214,7 @@ export const greatsword: Tech[] = [
 		skill: ['str', 'dex']
 	},
 	{
+		type: 'greatsword',
 		id: 'waning-moon',
 		name: 'Waning Moon',
 		description: 'Strike your target and provoke them. Somewhat easy to block or evade.',
@@ -201,6 +227,7 @@ export const greatsword: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'greatsword',
 		id: 'hailstorm',
 		name: 'Hailstorm',
 		description:
@@ -212,11 +239,9 @@ export const greatsword: Tech[] = [
 		conditionals: [],
 		effect: 'None',
 		skill: ['int', 'acu']
-	}
-];
-
-export const sword: Tech[] = [
+	},
 	{
+		type: 'sword',
 		id: 'sonic-slash',
 		name: 'Sonic Slash',
 		description: 'Swiftly lash out against a target.',
@@ -229,6 +254,7 @@ export const sword: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'sword',
 		id: 'rampart',
 		name: 'Rampart',
 		description: 'Protect an ally against attacks. Increases block chance.',
@@ -241,6 +267,7 @@ export const sword: Tech[] = [
 		skill: ['dex', 'mob']
 	},
 	{
+		type: 'sword',
 		id: 'brusque-slice',
 		name: 'Brusque Slice',
 		description: 'Slice an enemy in perhaps the rudest way possible. Has a minor delay effect.',
@@ -253,6 +280,7 @@ export const sword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'sword',
 		id: 'sonic-blade',
 		name: 'Sonic Blade',
 		description: 'Ranged attack. Send forth a vacuum of energy toward a target.',
@@ -265,6 +293,7 @@ export const sword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'sword',
 		id: 'demilune',
 		name: 'Demilune',
 		description: 'Swing your blade in a half-moon pattern with a blinding flash of light.',
@@ -277,6 +306,7 @@ export const sword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'sword',
 		id: 'rising-nova',
 		name: 'Rising Nova',
 		description: 'Scorch your foes with a merciless blast as you lift them from the ground.',
@@ -289,6 +319,7 @@ export const sword: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'sword',
 		id: 'heaven-and-earth',
 		name: 'Heaven and Earth',
 		description:
@@ -302,6 +333,7 @@ export const sword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'sword',
 		id: 'apathy',
 		name: 'Apathy',
 		description:
@@ -315,6 +347,7 @@ export const sword: Tech[] = [
 		skill: ['dex', 'mob']
 	},
 	{
+		type: 'sword',
 		id: 'triple-thrust',
 		name: 'Triple Thrust',
 		description: 'Swiftly pierce a target thrice.',
@@ -327,6 +360,7 @@ export const sword: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'sword',
 		id: 'thousand-blades',
 		name: 'Thousand Blades',
 		description:
@@ -340,6 +374,7 @@ export const sword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'sword',
 		id: 'halting-blade',
 		name: 'Halting Blade',
 		description:
@@ -353,6 +388,7 @@ export const sword: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'sword',
 		id: 'multi-way',
 		name: 'Multi-Way',
 		description:
@@ -366,6 +402,7 @@ export const sword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'sword',
 		id: 'rosario-impale',
 		name: 'Rosario Impale',
 		description:
@@ -379,6 +416,7 @@ export const sword: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'sword',
 		id: 'divide',
 		name: 'Divide',
 		description:
@@ -390,11 +428,9 @@ export const sword: Tech[] = [
 		conditionals: [],
 		effect: 'Death',
 		skill: ['int']
-	}
-];
-
-export const twinSwords: Tech[] = [
+	},
 	{
+		type: 'twinSwords',
 		id: 'dual-cross-cut',
 		name: 'Dual Cross Cut',
 		description:
@@ -408,6 +444,7 @@ export const twinSwords: Tech[] = [
 		skill: ['str', 'dex']
 	},
 	{
+		type: 'twinSwords',
 		id: 'dual-whirlwind',
 		name: 'Dual Whirlwind',
 		description: 'Dual-wield attack. Perform a dizzying array of slashes against random targets.',
@@ -420,6 +457,7 @@ export const twinSwords: Tech[] = [
 		skill: ['str', 'dex']
 	},
 	{
+		type: 'twinSwords',
 		id: 'dual-torrent',
 		name: 'Dual Torrent',
 		description: 'Dual-wield attack. Interrupt a slashing attack with punishing force.',
@@ -430,11 +468,9 @@ export const twinSwords: Tech[] = [
 		effect: 'None',
 		conditionals: ['Interrupt', 'Slash'],
 		skill: ['str', 'dex']
-	}
-];
-
-export const shortSword: Tech[] = [
+	},
 	{
+		type: 'shortsword',
 		id: 'quick-thrust',
 		name: 'Quick Thrust',
 		description: 'A swift forward thrust.',
@@ -447,6 +483,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex', 'mob']
 	},
 	{
+		type: 'shortsword',
 		id: 'mesmerize',
 		name: 'Mesmerize',
 		description: 'Twirl your sword to sometimes put a target to sleep. Deals no damage.',
@@ -459,6 +496,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'shortsword',
 		id: 'lightspeed',
 		name: 'Lightspeed',
 		description: 'Interrupt a piercing attack, dealing damage and increasing your speed.',
@@ -471,6 +509,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex', 'mob']
 	},
 	{
+		type: 'shortsword',
 		id: 'matador',
 		name: 'Matador',
 		description: 'Interrupt a blunt attack, dealing damage and greatly delaying the target.',
@@ -483,6 +522,7 @@ export const shortSword: Tech[] = [
 		skill: ['bump', 'dex']
 	},
 	{
+		type: 'shortsword',
 		id: 'apid-venom',
 		name: 'Apid Venom',
 		description: 'Lace your shortsword with bee venom and thrust it at the target.',
@@ -495,6 +535,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'shortsword',
 		id: 'crystalline-carve',
 		name: 'Crystalline Carve',
 		description:
@@ -508,6 +549,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'shortsword',
 		id: 'shocking-rush',
 		name: 'Shocking Rush',
 		description:
@@ -521,6 +563,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'shortsword',
 		id: 'piercing-lightning',
 		name: 'Piercing Lightning',
 		description: 'Ranged attack. Emit a bolt of lightning to pierce your foe.',
@@ -533,6 +576,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex', 'mob']
 	},
 	{
+		type: 'shortsword',
 		id: 'golden-note',
 		name: 'Golden Note',
 		description:
@@ -546,6 +590,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'shortsword',
 		id: 'eulogy',
 		name: 'Eulogy',
 		description: "Carve the target's last rites into them, occasionally causing sudden death.",
@@ -558,6 +603,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'shortsword',
 		id: 'southern-cross',
 		name: 'Southern Cross',
 		description: 'Etch a cross-like pattern into the target. Effective against demons and undead.',
@@ -570,6 +616,7 @@ export const shortSword: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'shortsword',
 		id: 'floral-extravaganza',
 		name: 'Floral Extravaganza',
 		description:
@@ -581,11 +628,9 @@ export const shortSword: Tech[] = [
 		conditionals: [],
 		effect: 'Death',
 		skill: ['dex']
-	}
-];
-
-export const spear: Tech[] = [
+	},
 	{
+		type: 'spear',
 		id: 'pierce',
 		name: 'Pierce',
 		description: 'Swiftly thrust your spear directly forward.',
@@ -598,6 +643,7 @@ export const spear: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'spear',
 		id: 'split-cranium',
 		name: 'Split Cranium',
 		description: "Crash your spear down directly on a target's skull, decreasing its focus.",
@@ -610,6 +656,7 @@ export const spear: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'spear',
 		id: 'shelter',
 		name: 'Shelter',
 		description: 'Protect an ally against attacks. Greatly increases block chance.',
@@ -622,6 +669,7 @@ export const spear: Tech[] = [
 		skill: ['dex', 'mob']
 	},
 	{
+		type: 'spear',
 		id: 'sweep',
 		name: 'sweep',
 		description: 'Swing your spear in a crescent pattern, occasionally stunning the target.',
@@ -634,6 +682,7 @@ export const spear: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'spear',
 		id: 'reaper',
 		name: 'Reaper',
 		description: 'Area attack. Attack all foes in one grand stroke.',
@@ -646,6 +695,7 @@ export const spear: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'spear',
 		id: 'aim',
 		name: 'Aim',
 		description: 'Ready a precise attack to ensure it strikes true. Difficult to block or evade.',
@@ -658,6 +708,7 @@ export const spear: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'spear',
 		id: 'mizuchi',
 		name: 'Mizuchi',
 		description: 'Ranged attack. Sometimes poisons the target.',
@@ -670,6 +721,7 @@ export const spear: Tech[] = [
 		skill: ['int', 'acu']
 	},
 	{
+		type: 'spear',
 		id: 'spiral-charge',
 		name: 'Spiral Charge',
 		description: 'Rush forward and skewer a foe. Somewhat easy to block or evade.',
@@ -682,6 +734,7 @@ export const spear: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'spear',
 		id: 'divine-lancer',
 		name: 'Divine Lancer',
 		description:
@@ -695,6 +748,7 @@ export const spear: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'spear',
 		id: 'arm-of-light',
 		name: 'Arm of Light',
 		description:
@@ -708,6 +762,7 @@ export const spear: Tech[] = [
 		skill: ['int', 'acu']
 	},
 	{
+		type: 'spear',
 		id: 'windmill',
 		name: 'Windmill',
 		description:
@@ -721,6 +776,7 @@ export const spear: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'spear',
 		id: 'triumvirate',
 		name: 'Triumvirate',
 		description: 'Assault your enemy thrice, occasionally stunning it.',
@@ -733,6 +789,7 @@ export const spear: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'spear',
 		id: 'swooping-dragon',
 		name: 'Swooping Dragon',
 		description: 'Weapon-specific tech. Nimbly lunge forward with the fierceness of a dragon.',
@@ -743,11 +800,9 @@ export const spear: Tech[] = [
 		conditionals: [],
 		effect: 'None',
 		skill: ['int', 'acu']
-	}
-];
-
-export const axe: Tech[] = [
+	},
 	{
+		type: 'axe',
 		id: 'treecleaver',
 		name: 'Treecleaver',
 		description: 'Swing downward like a lumberjack splitting a log. Effective against plantoids.',
@@ -760,6 +815,7 @@ export const axe: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'axe',
 		id: 'smash',
 		name: 'Smash',
 		description: 'Smash a target from above, provoking it.',
@@ -772,6 +828,7 @@ export const axe: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'axe',
 		id: 'maim',
 		name: 'Maim',
 		description: "Lunge forward at a target's legs, decreasing its speed.",
@@ -784,6 +841,7 @@ export const axe: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'axe',
 		id: 'vertical-smash',
 		name: 'Vertical Smash',
 		description: "Crunch a target's armor, decreasing its defense.",
@@ -796,6 +854,7 @@ export const axe: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'axe',
 		id: 'dimensional-break',
 		name: 'Dimensional Break',
 		description: 'Area attack. Sever foes connection to this world, rarely causing sudden death.',
@@ -808,6 +867,7 @@ export const axe: Tech[] = [
 		skill: ['str', 'int']
 	},
 	{
+		type: 'axe',
 		id: 'power-disruptor',
 		name: 'Power Disruptor',
 		description: "Aim directly for a target's means of offense, decreasing its attack.",
@@ -820,6 +880,7 @@ export const axe: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'axe',
 		id: 'hyper-hammer',
 		name: 'Hyper Hammer',
 		description: 'Send a target flying with a fierce blow, greatly delaying it.',
@@ -832,6 +893,7 @@ export const axe: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'axe',
 		id: 'unbridled-frenzy',
 		name: 'Unbridled Frenzy',
 		description: 'Unleash multiple attacks on random targets. Effective against plantoids.',
@@ -844,6 +906,7 @@ export const axe: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'axe',
 		id: 'hell-s-fury',
 		name: "Hell's Fury",
 		description: 'Interrupt a blunt attack, dealing damage in retribution.',
@@ -856,6 +919,7 @@ export const axe: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'axe',
 		id: 'reverse-delta',
 		name: 'Reverse Delta',
 		description: 'Perform a triangular fusillade of attacks. Difficult to block or evade.',
@@ -868,6 +932,7 @@ export const axe: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'axe',
 		id: 'morning-glory',
 		name: 'Morning Glory',
 		description:
@@ -881,6 +946,7 @@ export const axe: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'axe',
 		id: 'malefic-eclipse',
 		name: 'Malefic Eclipse',
 		description:
@@ -892,11 +958,9 @@ export const axe: Tech[] = [
 		conditionals: [],
 		effect: 'Death',
 		skill: ['str', 'int']
-	}
-];
-
-export const club: Tech[] = [
+	},
 	{
+		type: 'club',
 		id: 'roundhouse',
 		name: 'Roundhouse',
 		description:
@@ -910,6 +974,7 @@ export const club: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'club',
 		id: 'block',
 		name: 'Block',
 		description: 'Protect an ally against attacks. Increases block chance.',
@@ -922,6 +987,7 @@ export const club: Tech[] = [
 		skill: ['dex', 'mob']
 	},
 	{
+		type: 'club',
 		id: 'enkindle',
 		name: 'Enkindle',
 		description: 'Deliver a passionate, fiery blow that increases your attack power.',
@@ -934,6 +1000,7 @@ export const club: Tech[] = [
 		skill: ['str', 'int']
 	},
 	{
+		type: 'club',
 		id: 'bonecrusher',
 		name: 'Bonecrusher',
 		description: "Grind a target's bones to dust and decrease its attack power.",
@@ -946,6 +1013,7 @@ export const club: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'club',
 		id: 'seismic-strike',
 		name: 'Seismic Strike',
 		description:
@@ -959,6 +1027,7 @@ export const club: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'club',
 		id: 'shiversmash',
 		name: 'Shiversmash',
 		description: 'Punish a target with a bludgeon of frigid ice and increase your defense.',
@@ -971,6 +1040,7 @@ export const club: Tech[] = [
 		skill: ['str', 'int']
 	},
 	{
+		type: 'club',
 		id: 'gale-strike',
 		name: 'Gale Strike',
 		description:
@@ -984,6 +1054,7 @@ export const club: Tech[] = [
 		skill: ['mob']
 	},
 	{
+		type: 'club',
 		id: 'rock-splitter',
 		name: 'Rock Splitter',
 		description:
@@ -997,6 +1068,7 @@ export const club: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'club',
 		id: 'grand-slam',
 		name: 'Grand Slam',
 		description: 'Area attack. Dominate the battlefield, damaging all foes.',
@@ -1009,6 +1081,7 @@ export const club: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'club',
 		id: 'nutcracker',
 		name: 'Nutcracker',
 		description: 'Strike a target with overwhelming rage, decreasing its defense.',
@@ -1021,6 +1094,7 @@ export const club: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'club',
 		id: 'maniac-blossom',
 		name: 'Maniac Blossom',
 		description: "Interrupt a target's slashing attack and deal grievous wounds.",
@@ -1033,6 +1107,7 @@ export const club: Tech[] = [
 		skill: ['str']
 	},
 	{
+		type: 'club',
 		id: 'graceful-swing',
 		name: 'Graceful Swing',
 		description:
@@ -1044,11 +1119,9 @@ export const club: Tech[] = [
 		conditionals: [],
 		effect: 'Ragecancel',
 		skill: ['str']
-	}
-];
-
-export const bow: Tech[] = [
+	},
 	{
+		type: 'bow',
 		id: 'aimed-shot',
 		name: 'Aimed Shot',
 		description: 'Ranged attack. Shoot an arrow that is very likely to hit.',
@@ -1061,6 +1134,7 @@ export const bow: Tech[] = [
 		skill: ['dex', 'acu']
 	},
 	{
+		type: 'bow',
 		id: 'shadow-weave',
 		name: 'Shadow Weave',
 		description: 'Ranged attack. Deals no damage but can sometimes paralyze a foe.',
@@ -1073,6 +1147,7 @@ export const bow: Tech[] = [
 		skill: ['dex', 'acu']
 	},
 	{
+		type: 'bow',
 		id: 'quick-nock',
 		name: 'Quick Nock',
 		description: 'Ranged attack. A swift shot that pierces foes.',
@@ -1085,6 +1160,7 @@ export const bow: Tech[] = [
 		skill: ['dex', 'mob']
 	},
 	{
+		type: 'bow',
 		id: 'rapid-volley',
 		name: 'Rapid Volley',
 		description: 'Unleash a volley of low-accuracy shots at random targets.',
@@ -1097,6 +1173,7 @@ export const bow: Tech[] = [
 		skill: ['acu']
 	},
 	{
+		type: 'bow',
 		id: 'incendiary-arrow',
 		name: 'Incendiary Arrow',
 		description: 'Ranged attack. Shoot forth an arrow of blistering heat that provokes the target.',
@@ -1109,6 +1186,7 @@ export const bow: Tech[] = [
 		skill: ['int', 'acu']
 	},
 	{
+		type: 'bow',
 		id: 'id-break',
 		name: 'Id Break',
 		description: 'Ranged attack. Damages and sometimes confuses a target, disrupting its actions.',
@@ -1121,6 +1199,7 @@ export const bow: Tech[] = [
 		skill: ['dex', 'acu']
 	},
 	{
+		type: 'bow',
 		id: 'plasma-shot',
 		name: 'Plasma Shot',
 		description:
@@ -1134,6 +1213,7 @@ export const bow: Tech[] = [
 		skill: ['int', 'acu']
 	},
 	{
+		type: 'bow',
 		id: 'falling-phoenix',
 		name: 'Falling Phoenix',
 		description:
@@ -1147,6 +1227,7 @@ export const bow: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'bow',
 		id: 'rain-of-arrows',
 		name: 'Rain of Arrows',
 		description: 'Area attack. Damage foes with arrows that rain from the sky.',
@@ -1159,6 +1240,7 @@ export const bow: Tech[] = [
 		skill: ['dex', 'acu']
 	},
 	{
+		type: 'bow',
 		id: 'heart-seeker',
 		name: 'Heart Seeker',
 		description: 'Ranged attack. Aim directly for the target vitals, sometimes frenzying it.',
@@ -1171,6 +1253,7 @@ export const bow: Tech[] = [
 		skill: ['int', 'acu']
 	},
 	{
+		type: 'bow',
 		id: 'millionaire',
 		name: 'Millionaire',
 		description: 'Rapidly shoot at various targets indiscriminately.',
@@ -1183,6 +1266,7 @@ export const bow: Tech[] = [
 		skill: ['dex', 'acu']
 	},
 	{
+		type: 'bow',
 		id: 'deathshot',
 		name: 'Deathshot',
 		description:
@@ -1194,11 +1278,9 @@ export const bow: Tech[] = [
 		conditionals: [],
 		effect: 'Frenzy',
 		skill: ['dex', 'mob']
-	}
-];
-
-export const martialArts: Tech[] = [
+	},
 	{
+		type: 'martialArts',
 		id: 'punch',
 		name: 'Punch',
 		description: 'Punch forward in the most basic manner possible.',
@@ -1211,6 +1293,7 @@ export const martialArts: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'martialArts',
 		id: 'tumble',
 		name: 'Tumble',
 		description: 'Twist the air around a foe to send it flying, occasionally stunning it.',
@@ -1223,6 +1306,7 @@ export const martialArts: Tech[] = [
 		skill: ['dex', 'end']
 	},
 	{
+		type: 'martialArts',
 		id: 'chop',
 		name: 'Chop',
 		description: 'Strike a foe with an unerring blow, provoking it.',
@@ -1235,6 +1319,7 @@ export const martialArts: Tech[] = [
 		skill: ['str', 'dex']
 	},
 	{
+		type: 'martialArts',
 		id: 'slide',
 		name: 'Slide',
 		description: "Slide forward along the ground aiming for a target's legs, decreasing its speed.",
@@ -1247,6 +1332,7 @@ export const martialArts: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'martialArts',
 		id: 'jolt-counter',
 		name: 'Jolt Counter',
 		description:
@@ -1260,6 +1346,7 @@ export const martialArts: Tech[] = [
 		skill: ['dex']
 	},
 	{
+		type: 'martialArts',
 		id: 'thunder-kick',
 		name: 'Thunder Kick',
 		description: 'Thrust your legs forward with shocking force, delaying the target.',
@@ -1272,6 +1359,7 @@ export const martialArts: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'martialArts',
 		id: 'submission',
 		name: 'Submission',
 		description: 'Make a foe kneel before you in agony, decreasing its attack.',
@@ -1284,6 +1372,7 @@ export const martialArts: Tech[] = [
 		skill: ['dex', 'end']
 	},
 	{
+		type: 'martialArts',
 		id: 'raksha',
 		name: 'Raksha',
 		description: 'Unleash a demonic frenzy, provoking the target.',
@@ -1296,6 +1385,7 @@ export const martialArts: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'martialArts',
 		id: 'niagara-buster',
 		name: 'Niagara Buster',
 		description:
@@ -1309,6 +1399,7 @@ export const martialArts: Tech[] = [
 		skill: ['dex', 'end']
 	},
 	{
+		type: 'martialArts',
 		id: 'triple-dragon',
 		name: 'Triple Dragon',
 		description: 'Let loose the energy of a triumvirate of dragons.',
@@ -1321,6 +1412,7 @@ export const martialArts: Tech[] = [
 		skill: ['str', 'mob']
 	},
 	{
+		type: 'martialArts',
 		id: 'retribution',
 		name: 'Retribution',
 		description:
@@ -1334,6 +1426,7 @@ export const martialArts: Tech[] = [
 		skill: ['dex', 'str']
 	},
 	{
+		type: 'martialArts',
 		id: 'rising-sun',
 		name: 'Rising Sun',
 		description:
@@ -1345,11 +1438,9 @@ export const martialArts: Tech[] = [
 		conditionals: [],
 		effect: 'None',
 		skill: ['str', 'mob']
-	}
-];
-
-export const staff: Tech[] = [
+	},
 	{
+		type: 'staff',
 		id: 'focusing-strike',
 		name: 'Focusing Strike',
 		description: 'Beat a target with your staff, increasing your focus.',
@@ -1362,6 +1453,7 @@ export const staff: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'staff',
 		id: 'shattered-dreams',
 		name: 'Shattered Dreams',
 		description: 'Mercilessly batter a target, sometimes confusing it.',
@@ -1374,6 +1466,7 @@ export const staff: Tech[] = [
 		skill: ['str', 'acu']
 	},
 	{
+		type: 'staff',
 		id: 'cruncher',
 		name: 'Cruncher',
 		description: 'Damage a foe, occasionally distracting it.',
@@ -1386,36 +1479,3 @@ export const staff: Tech[] = [
 		skill: ['str', 'acu']
 	}
 ];
-
-export type ExtendedTech = Tech & { type: string };
-export const techs: { [key: string]: ExtendedTech } = {};
-greatsword.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'greatsword' };
-});
-sword.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'sword' };
-});
-twinSwords.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'twinSwords' };
-});
-shortSword.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'shortSword' };
-});
-spear.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'spear' };
-});
-axe.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'axe' };
-});
-club.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'club' };
-});
-bow.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'bow' };
-});
-martialArts.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'martialArts' };
-});
-staff.forEach((tech) => {
-	techs[tech.id] = { ...tech, type: 'staff' };
-});

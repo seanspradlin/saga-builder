@@ -4,6 +4,8 @@
  */
 
 export interface Incantation {
+	type: 'incantation';
+	element: 'natura' | 'ignis' | 'terra' | 'aes' | 'unda';
 	id: string;
 	name: string;
 	cost: number;
@@ -13,8 +15,10 @@ export interface Incantation {
 	effect?: string;
 	skill: string[];
 }
-export const natura: Incantation[] = [
+export const incantations: Incantation[] = [
 	{
+		type: 'incantation',
+		element: 'natura',
 		id: 'thorny-fetters',
 		name: 'Thorny Fetters',
 		cost: 2,
@@ -25,6 +29,8 @@ export const natura: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'natura',
 		id: 'restoration',
 		name: 'Restoration',
 		cost: 5,
@@ -34,6 +40,8 @@ export const natura: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'natura',
 		id: 'call-lightning',
 		name: 'Call Lightning',
 		cost: 4,
@@ -44,6 +52,8 @@ export const natura: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'natura',
 		id: 'tailwind',
 		name: 'Tailwind',
 		cost: 4,
@@ -52,11 +62,10 @@ export const natura: Incantation[] = [
 		target: 'All allies',
 		effect: 'BP Up',
 		skill: ['int', 'acu']
-	}
-];
-
-export const ignis: Incantation[] = [
+	},
 	{
+		type: 'incantation',
+		element: 'ignis',
 		id: 'blazing-rush',
 		name: 'Blazing Rush',
 		cost: 2,
@@ -67,6 +76,8 @@ export const ignis: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'ignis',
 		id: 'power-surge',
 		name: 'Power Surge',
 		cost: 1,
@@ -77,6 +88,8 @@ export const ignis: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'ignis',
 		id: 'wildfire',
 		name: 'Wildfire',
 		cost: 5,
@@ -87,6 +100,8 @@ export const ignis: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'ignis',
 		id: 'crimson-flare',
 		name: 'Crimson Flare',
 		cost: 1,
@@ -95,11 +110,10 @@ export const ignis: Incantation[] = [
 		attributes: ['Fire'],
 		effect: 'Attack Down',
 		skill: ['int', 'acu']
-	}
-];
-
-export const terra: Incantation[] = [
+	},
 	{
+		type: 'incantation',
+		element: 'terra',
 		id: 'hypergravity',
 		name: 'Hypergravity',
 		cost: 3,
@@ -110,6 +124,8 @@ export const terra: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'terra',
 		id: 'sleep',
 		name: 'Sleep',
 		cost: 3,
@@ -120,6 +136,8 @@ export const terra: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'terra',
 		id: 'earth-heal',
 		name: 'Earth Heal',
 		cost: 2,
@@ -130,6 +148,8 @@ export const terra: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'terra',
 		id: 'churning-earth',
 		name: 'Churning Earth',
 		cost: 3,
@@ -138,11 +158,10 @@ export const terra: Incantation[] = [
 		attributes: ['Blunt'],
 		effect: 'Defense Down',
 		skill: ['int', 'acu']
-	}
-];
-
-export const aes: Incantation[] = [
+	},
 	{
+		type: 'incantation',
+		element: 'aes',
 		id: 'holy-grail',
 		name: 'Holy Grail',
 		cost: 4,
@@ -153,6 +172,8 @@ export const aes: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'aes',
 		id: 'armor-blessing',
 		name: 'Armor Blessing',
 		cost: 1,
@@ -163,6 +184,8 @@ export const aes: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'aes',
 		id: 'siren',
 		name: 'Siren',
 		cost: 2,
@@ -173,6 +196,8 @@ export const aes: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'aes',
 		id: 'the-tower',
 		name: 'The Tower',
 		cost: 2,
@@ -181,11 +206,10 @@ export const aes: Incantation[] = [
 		attributes: ['Slash', 'Pierce'],
 		effect: 'Focus Down',
 		skill: ['int', 'acu']
-	}
-];
-
-export const unda: Incantation[] = [
+	},
 	{
+		type: 'incantation',
+		element: 'unda',
 		id: 'poisonous-mist',
 		name: 'Poisonous Mist',
 		cost: 3,
@@ -196,6 +220,8 @@ export const unda: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'unda',
 		id: 'water-blast',
 		name: 'Water Blast',
 		cost: 4,
@@ -206,6 +232,8 @@ export const unda: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'unda',
 		id: 'rain-of-life',
 		name: 'Rain of Life',
 		cost: 3,
@@ -216,6 +244,8 @@ export const unda: Incantation[] = [
 		skill: ['int']
 	},
 	{
+		type: 'incantation',
+		element: 'unda',
 		id: 'snowstorm',
 		name: 'Snowstorm',
 		cost: 6,
@@ -226,21 +256,3 @@ export const unda: Incantation[] = [
 		skill: ['int', 'acu']
 	}
 ];
-
-export type ExtendedIncantation = Incantation & { type: string };
-export const incantations: { [key: string]: ExtendedIncantation } = {};
-natura.forEach((incantation) => {
-	incantations[incantation.id] = { ...incantation, type: 'natura' };
-});
-ignis.forEach((incantation) => {
-	incantations[incantation.id] = { ...incantation, type: 'ignis' };
-});
-terra.forEach((incantation) => {
-	incantations[incantation.id] = { ...incantation, type: 'terra' };
-});
-aes.forEach((incantation) => {
-	incantations[incantation.id] = { ...incantation, type: 'aes' };
-});
-unda.forEach((incantation) => {
-	incantations[incantation.id] = { ...incantation, type: 'unda' };
-});
