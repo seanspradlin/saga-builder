@@ -14,11 +14,13 @@ interface RoleData {
 
 export class CharacterBuild {
 	characterRoles: string[];
-	learnableRoles: string[] = [];
-	learnedAbilities: string[] = [];
-	requiredAbilities: string[] = [];
 
-	constructor(public character: string) {
+	constructor(
+		public character: string,
+		private learnableRoles: string[] = [],
+		private learnedAbilities: string[] = [],
+		private requiredAbilities: string[] = []
+	) {
 		this.characterRoles = characterRoles.filter((e) => e.character === character).map((e) => e.id);
 	}
 

@@ -12,3 +12,4 @@
 	Create a retinue of characters and find what techs need to be learned to fill the roles you want.
 </p>
 <p>{message}</p>
+<a href="/add-member">Add a Member</a>
