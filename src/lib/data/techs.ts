@@ -51,7 +51,7 @@ export const techs: Tech[] = [
 		attributes: [],
 		ranged: false,
 		conditionals: ['Interrupt'],
-		effect: 'Guardscale',
+		effect: 'Protect',
 		skill: ['dex', 'mob']
 	},
 	{
@@ -263,7 +263,7 @@ export const techs: Tech[] = [
 		attributes: [],
 		ranged: false,
 		conditionals: ['Interrupt'],
-		effect: 'Guardscale',
+		effect: 'Protect',
 		skill: ['dex', 'mob']
 	},
 	{
@@ -275,8 +275,8 @@ export const techs: Tech[] = [
 		target: 'Single',
 		attributes: ['Slash'],
 		ranged: false,
-		conditionals: ['Bump'],
-		effect: 'None',
+		conditionals: [],
+		effect: 'Delay',
 		skill: ['str']
 	},
 	{
@@ -515,11 +515,11 @@ export const techs: Tech[] = [
 		description: 'Interrupt a blunt attack, dealing damage and greatly delaying the target.',
 		cost: 3,
 		target: 'Single',
-		attributes: ['Pierce'],
+		attributes: ['Pierce', 'Strike'],
 		ranged: false,
 		conditionals: ['Interrupt'],
-		effect: 'Strike',
-		skill: ['bump', 'dex']
+		effect: 'Delay',
+		skill: ['dex']
 	},
 	{
 		type: 'shortsword',
@@ -665,7 +665,7 @@ export const techs: Tech[] = [
 		attributes: [],
 		ranged: false,
 		conditionals: ['Interrupt'],
-		effect: 'Guardscale',
+		effect: 'Protect',
 		skill: ['dex', 'mob']
 	},
 	{
@@ -983,7 +983,7 @@ export const techs: Tech[] = [
 		attributes: [],
 		ranged: false,
 		conditionals: ['Interrupt'],
-		effect: 'Guardscale',
+		effect: 'Protect',
 		skill: ['dex', 'mob']
 	},
 	{
@@ -1049,8 +1049,8 @@ export const techs: Tech[] = [
 		target: 'Single',
 		attributes: ['Blunt'],
 		ranged: false,
-		conditionals: ['Interrupt', 'Bump'],
-		effect: 'None',
+		conditionals: ['Interrupt'],
+		effect: 'Delay',
 		skill: ['mob']
 	},
 	{

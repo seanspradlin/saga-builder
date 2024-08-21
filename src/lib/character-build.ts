@@ -1,13 +1,14 @@
 import { abilities, type Ability } from './data/abilities';
 import { roles, characterRoles, type Role } from '$lib/data/roles';
+import { characters } from '$lib/data/characters';
 
-interface AbilityData {
+export interface AbilityData {
 	ability: Ability;
 	learned: boolean;
 	required: boolean;
 }
 
-interface RoleData {
+export interface RoleData {
 	role: Role;
 	unlocked: boolean;
 }
@@ -85,3 +86,75 @@ export class CharacterBuild {
 		this.learnedAbilities = this.learnedAbilities.filter((id) => id !== abilityId);
 	}
 }
+
+export function getAllRoles(
+	characterId: string,
+	learnableRoles: string[] = [],
+	learnedAbilities: string[] = []
+) {
+	const roleData: RoleData[] = [];
+	const character = characters.find((e) => e.id === characterId);
+	const roleIds = [...learnableRoles, ...(character?.roles || [])];
+	roleIds.forEach((roleId) => {
+		const role = roles[roleId];
+		if (role.type === 'character') {
+			roleData.push({
+				unlocked: true,
+				role
+			});
+		} else {
+			const unlocked = role.requiredTechs.every((ability) => learnedAbilities.includes(ability));
+			roleData.push({
+				unlocked,
+				role
+			});
+		}
+	});
+	return roleData;
+}
+
+export function getAbilities(learnableRoles: string[] = [], learnedAbilities: string[] = []) {
+	const requiredAbilities = getRequiredAbilities(learnableRoles);
+	const abilitySet: Set<string> = new Set();
+	requiredAbilities.forEach((id) => {
+		abilitySet.add(id);
+	});
+	learnedAbilities.forEach((id) => {
+		abilitySet.add(id);
+	});
+	const abilityData: AbilityData[] = [];
+	abilitySet.forEach((id) => {
+		const ability = abilities[id];
+		const learned = learnedAbilities.includes(id);
+		const required = requiredAbilities.includes(id);
+		abilityData.push({
+			ability,
+			learned,
+			required
+		});
+	});
+	return abilityData;
+}
+
+export function getRequiredAbilities(learnableRoles: string[] = []) {
+	const abilitySet: Set<string> = new Set();
+	learnableRoles.forEach((roleId) => {
+		const role = roles[roleId];
+		if (role && role.type !== 'character') {
+			role.requiredTechs.forEach((ability) => {
+				abilitySet.add(ability);
+			});
+		}
+	});
+	return Array.from(abilitySet);
+}
+
+export function getCharacterInfo(characterId: string, roles: string[], abilities: string[]) {
+	const character = characters.find((c) => c.id === characterId);
+	if (!character) {
+		throw new Error(`Character not found: ${characterId}`);
+	}
+	const allRoles = getAllRoles(characterId, roles, abilities);
+	return { character, roles: allRoles };
+}
+export type CharacterInfo = ReturnType<typeof getCharacterInfo>;

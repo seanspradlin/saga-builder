@@ -768,7 +768,7 @@ export const learnableRoles: LearnableRole[] = [
 	},
 	{
 		type: 'resistance',
-		id: 'the-forceful',
+		id: 'the-forceful-resistance',
 		role: 'The Forceful',
 		description: 'Physical resistances up (M) / Physical-attack damage up (S)',
 		requiredTechs: ['power-disruptor', 'hell-s-fury', 'dimensional-break']
@@ -1104,7 +1104,7 @@ export const learnableRoles: LearnableRole[] = [
 	},
 	{
 		type: 'attributeBoosting',
-		id: 'the-strong',
+		id: 'the-strong-attr',
 		role: 'The Strong',
 		description: 'Strength up (L)',
 		requiredTechs: ['vandalize', 'enkindle']
