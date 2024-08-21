@@ -9,7 +9,7 @@
 </script>
 
 <h1 class="text-xl font-bold">Create a New Retinue</h1>
-<form on:submit|preventDefault={handleSubmit} class="max-w-screen-sm flex flex-col gap-4">
+<form on:submit|preventDefault={handleSubmit} class="max-w-sm flex flex-col gap-4 my-8">
 	<label class="input input-bordered flex items-center gap-2" for="name"
 		>Name
 		<input
