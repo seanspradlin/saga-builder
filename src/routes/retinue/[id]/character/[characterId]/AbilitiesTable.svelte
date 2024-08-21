@@ -4,7 +4,7 @@
 
 	let abilities: AbilityData[] = [];
 	export let learnedAbilities: string[];
-	$: abilities = getAbilities(selectedRoles);
+	$: abilities = getAbilities(selectedRoles, learnedAbilities);
 </script>
 
 <div class="overflow-x-auto my-8">

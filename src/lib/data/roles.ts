@@ -673,7 +673,7 @@ export const learnableRoles: LearnableRole[] = [
 		id: 'eternal-student',
 		role: 'Eternal Student',
 		description: 'Elemental damage up (L) / Elemental resistances down (M)',
-		requiredTechs: ['wildfire', 'poison mist']
+		requiredTechs: ['wildfire', 'poisonous-mist']
 	},
 	{
 		type: 'attack',
