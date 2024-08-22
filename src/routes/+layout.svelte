@@ -1,7 +1,9 @@
 <script>
 	import 'tailwindcss/tailwind.css';
+	import Header from '$lib/components/Header.svelte';
 </script>
 
-<div class="container mx-auto p-4">
+<main class="container mx-auto p-4">
+	<Header />
 	<slot />
-</div>
+</main>

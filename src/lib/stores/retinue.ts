@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { firestore } from '$lib/firebase';
+import { firestore, auth } from '$lib/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { writable } from 'svelte/store';
 
@@ -16,13 +16,16 @@ export interface Retinue {
 
 export default function retinueStore(retinueId: string) {
 	const { subscribe } = writable<Retinue>(undefined, (set) => {
-		if (browser) {
-			onSnapshot(doc(firestore, 'retinues', retinueId), (snapshot) => {
-				const data = snapshot.data() as Retinue;
-				if (data) {
-					set(data);
+		if (browser && auth.currentUser) {
+			onSnapshot(
+				doc(firestore, 'users', auth.currentUser.uid, 'retinues', retinueId),
+				(snapshot) => {
+					const data = snapshot.data() as Retinue;
+					if (data) {
+						set(data);
+					}
 				}
-			});
+			);
 		}
 	});
 
