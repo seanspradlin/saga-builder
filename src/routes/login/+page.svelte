@@ -1,57 +1,28 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	let email: string;
-	let password: string;
-	let errorMessage: string;
-
-	import { signInWithEmailAndPassword, AuthErrorCodes } from 'firebase/auth';
-	import { auth } from '$lib/firebase';
-	import { FirebaseError } from 'firebase/app';
-	import Google from './Google.svelte';
-
-	async function login() {
-		if (email && password) {
-			try {
-				await signInWithEmailAndPassword(auth, email, password);
-				goto('/');
-			} catch (error) {
-				if (error instanceof FirebaseError) {
-					switch (error.code) {
-						case AuthErrorCodes.INVALID_EMAIL:
-							errorMessage = 'Invalid email';
-							break;
-						case AuthErrorCodes.USER_DELETED:
-							errorMessage = 'Incorrect password';
-							break;
-						case AuthErrorCodes.INVALID_PASSWORD:
-							errorMessage = 'Incorrect password';
-							break;
-					}
-					console.log(error.code);
-				}
-			}
-		}
-	}
+	import LoginForm from './LoginForm.svelte';
+	import Fa from 'svelte-fa';
+	import {
+		faGoogle,
+		faFacebook,
+		faInstagram,
+		faTwitch,
+		faXTwitter
+	} from '@fortawesome/free-brands-svg-icons';
 </script>
 
-<Google />
-<form on:submit|preventDefault={login}>
-	<div class="form-control w-full max-w-md">
-		<label class="label label-text" for="email">Email</label>
-		<input
-			class="input input-bordered"
-			placeholder="lunch.eater@Example.com"
-			type="text"
-			bind:value={email}
-			id="email"
-		/>
+<div class="card card-bordered mx-auto my-14 bg-base-300 w-full max-w-screen-sm shadow-lg">
+	<div class="card-body">
+		<h1 class="card-title">Login</h1>
+		<LoginForm />
+		<div class="divider my-8">OR</div>
+		<div class="flex flex-row gap-8 justify-center">
+			<Fa icon={faGoogle} size="2x" />
+			<Fa icon={faInstagram} size="2x" />
+			<Fa icon={faTwitch} size="2x" />
+		</div>
+		<div class="flex flex-col items-center mt-8">
+			<a href="/magic" class="underline font-bold">Login with magic link</a>
+			<a href="/register" class="underline font-bold">Register for an account</a>
+		</div>
 	</div>
-	<div class="form-control w-full max-w-md">
-		<label class="label label-text" for="password">Password</label>
-		<input class="input input-bordered" type="password" id="password" bind:value={password} />
-	</div>
-	<button type="submit" class="btn btn-primary my-4">Login</button>
-	{#if errorMessage}
-		{errorMessage}
-	{/if}
-</form>
+</div>

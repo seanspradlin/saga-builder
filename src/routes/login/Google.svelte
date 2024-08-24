@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-	import { auth } from '$lib/firebase';
+	import { auth } from '$lib/auth';
 	import { goto } from '$app/navigation';
 	const provider = new GoogleAuthProvider();
 	async function login() {

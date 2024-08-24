@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
-import { firestore, auth } from '$lib/firebase';
+import { firestore } from '$lib/firestore';
+import { auth } from '$lib/auth';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { writable } from 'svelte/store';
 

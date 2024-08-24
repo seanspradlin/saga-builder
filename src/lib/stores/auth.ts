@@ -1,7 +1,7 @@
 import type { User } from 'firebase/auth';
 import { writable } from 'svelte/store';
 import { onAuthStateChanged, signInAnonymously } from 'firebase/auth';
-import { auth } from '$lib/firebase';
+import { auth } from '$lib/auth';
 import { browser } from '$app/environment';
 
 export const user = writable<User | null>(null);

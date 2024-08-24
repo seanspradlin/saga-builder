@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { signOut } from 'firebase/auth';
-	import { auth } from '$lib/firebase';
+	import { auth } from '$lib/auth';
 	import { user, isLoading } from '$lib/stores/auth';
 
 	const logout = async () => signOut(auth);
