@@ -39,15 +39,16 @@
 		<div class="label"><span class="label-text">Email</span></div>
 		<div class="input input-bordered flex items-center gap-2">
 			<Fa icon={faUser} />
-			<input type="email" bind:value={email} class="grow" />
+			<input type="email" bind:value={email} class="grow" required />
 		</div>
 	</label>
 	<label class="form-control w-full bg-base text-base-content">
 		<div class="label"><span class="label-text">Password</span></div>
 		<div class="input input-bordered flex items-center gap-2">
 			<Fa icon={faKey} />
-			<input type="password" bind:value={password} class="grow" />
+			<input type="password" bind:value={password} class="grow" required />
 		</div>
 	</label>
+	{#if errorMessage}<p class="text-error">{errorMessage}</p>{/if}
 	<button type="submit" class="btn btn-primary btn-block mt-4">Login</button>
 </form>

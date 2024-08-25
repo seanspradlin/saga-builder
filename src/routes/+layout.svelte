@@ -1,8 +1,10 @@
 <script>
 	import 'tailwindcss/tailwind.css';
+	import Header from '$lib/components/Header.svelte';
 </script>
 
 <div class="min-h-screen bg-base text-base flex flex-col">
+	<Header />
 	<main class="container mx-auto h-full p-8 flex-grow">
 		<slot />
 	</main>
