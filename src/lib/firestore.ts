@@ -1,6 +1,27 @@
-import { firestore } from './firebase';
-import { collection, addDoc, getDoc, setDoc, updateDoc, doc } from 'firebase/firestore';
-import { auth } from './firebase';
+// import { firestore } from './firebase';
+import { app } from '$lib/firebase';
+import { browser } from '$app/environment';
+import {
+	getFirestore,
+	connectFirestoreEmulator,
+	collection,
+	addDoc,
+	getDoc,
+	setDoc,
+	updateDoc,
+	doc,
+	Firestore
+} from 'firebase/firestore';
+import { auth } from '$lib/auth';
+
+export let firestore: Firestore;
+
+if (browser) {
+	firestore = getFirestore(app);
+	if (window.location.hostname === 'localhost') {
+		connectFirestoreEmulator(firestore, 'localhost', 8080);
+	}
+}
 
 export async function createNewRetinue(name: string) {
 	if (!auth.currentUser) {

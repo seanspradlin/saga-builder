@@ -14,7 +14,8 @@
 		if ($retinue) {
 			member = getCharacterInfo(
 				$retinue.members[$page.params.characterId].id,
-				$retinue.members[$page.params.characterId].roles
+				$retinue.members[$page.params.characterId].roles,
+				$retinue.members[$page.params.characterId].abilities
 			);
 			if (!selectedRoles) {
 				selectedRoles = $retinue.members[$page.params.characterId].roles || [];
