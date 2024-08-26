@@ -645,7 +645,7 @@ export const learnableRoles: LearnableRole[] = [
 		id: 'berserker',
 		role: 'Berserker',
 		description: 'Physical-attack damage up (L) / Block and evasion rate down (L)',
-		requiredTechs: ['triple-thrust', 'spiral-charge', 'smash']
+		requiredTechs: ['triple-thrust', 'spiral-charge', 'smash-axe']
 	},
 	{
 		type: 'attack',
@@ -925,7 +925,7 @@ export const learnableRoles: LearnableRole[] = [
 		id: 'decoy',
 		role: 'Decoy',
 		description: 'Chance to be targeted up (L)',
-		requiredTechs: ['seismic-strike', 'chop', 'smash', 'windmill']
+		requiredTechs: ['seismic-strike', 'chop', 'smash-axe', 'windmill']
 	},
 	{
 		type: 'delay',
@@ -1051,7 +1051,7 @@ export const learnableRoles: LearnableRole[] = [
 		id: 'the-untoppleable',
 		role: 'The Untoppleable',
 		description: 'HP up (L)',
-		requiredTechs: ['smash', 'optical-slash']
+		requiredTechs: ['smash-axe', 'optical-slash']
 	},
 	{
 		type: 'attributeBoosting',
