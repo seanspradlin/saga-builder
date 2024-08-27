@@ -149,12 +149,26 @@ export function getRequiredAbilities(learnableRoles: string[] = []) {
 	return Array.from(abilitySet);
 }
 
-export function getCharacterInfo(characterId: string, roles: string[], abilities: string[]) {
+export function getRemainingAbilities(roles: string[], learnedAbilities: string[]) {
+	const requiredAbilities = getRequiredAbilities(roles);
+	const remainingAbilities = requiredAbilities.filter((e) => !learnedAbilities.includes(e));
+	return remainingAbilities
+		.map((abilityId) => abilities[abilityId])
+		.sort((ab1, ab2) => {
+			if (ab1.type === ab2.type) {
+				return ab1.name > ab2.name ? 1 : -1;
+			}
+			return ab1.type > ab2.type ? 1 : -1;
+		});
+}
+
+export function getCharacterInfo(characterId: string, roles: string[], learnedAbilities: string[]) {
 	const character = characters.find((c) => c.id === characterId);
 	if (!character) {
 		throw new Error(`Character not found: ${characterId}`);
 	}
-	const allRoles = getAllRoles(characterId, roles, abilities);
-	return { character, roles: allRoles };
+	const allRoles = getAllRoles(characterId, roles, learnedAbilities);
+	const remainingAbilities = getRemainingAbilities(roles, learnedAbilities);
+	return { character, roles: allRoles, remainingAbilities };
 }
 export type CharacterInfo = ReturnType<typeof getCharacterInfo>;

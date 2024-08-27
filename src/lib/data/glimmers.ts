@@ -75,14 +75,14 @@ export type Glimmer =
 export const glimmers: { [key: string]: Glimmer } = {
 	treecleaver: {
 		type: 'axe',
-		standard: [''],
-		power: [''],
-		technical: [''],
-		special: ['']
+		standard: [],
+		power: [],
+		technical: [],
+		special: []
 	},
 	'smash-axe': {
 		type: 'axe',
-		standard: [''],
+		standard: [],
 		power: ['treecleaver'],
 		technical: ['treecleaver', 'power-disruptor'],
 		special: ['treecleaver', 'power-disruptor']
@@ -90,7 +90,7 @@ export const glimmers: { [key: string]: Glimmer } = {
 	maim: {
 		type: 'axe',
 		standard: ['treecleaver', 'hyper-hammer'],
-		power: [''],
+		power: [],
 		technical: ['treecleaver', 'power-disruptor'],
 		special: ['treecleaver', 'power-disruptor']
 	},
@@ -98,71 +98,71 @@ export const glimmers: { [key: string]: Glimmer } = {
 		type: 'axe',
 		standard: ['treecleaver', 'dimension-break'],
 		power: ['treecleaver'],
-		technical: [''],
-		special: ['']
+		technical: [],
+		special: []
 	},
-	'dimension-break': {
+	'dimensional-break': {
 		type: 'axe',
 		standard: ['maim'],
-		power: [''],
-		technical: [''],
-		special: ['']
+		power: [],
+		technical: [],
+		special: []
 	},
 	'power-disruptor': {
 		type: 'axe',
-		standard: [''],
+		standard: [],
 		power: ['smash', 'maim'],
-		technical: [''],
+		technical: [],
 		special: ['smash', 'maim']
 	},
 	'hyper-hammer': {
 		type: 'axe',
 		standard: ['vertical-smash'],
-		power: [''],
+		power: [],
 		technical: ['smash', 'vertical-smash'],
-		special: ['']
+		special: []
 	},
 	'unbridled-frenzy': {
 		type: 'axe',
-		standard: [''],
-		power: [''],
-		technical: [''],
+		standard: [],
+		power: [],
+		technical: [],
 		special: ['treecleaver']
 	},
 	'hells-fury': {
 		type: 'axe',
-		standard: [''],
+		standard: [],
 		power: ['vertical-smash', 'hyper-hammer'],
-		technical: [''],
-		special: ['blunt-interrupt']
+		technical: [],
+		special: []
 	},
 	'reverse-delta': {
 		type: 'axe',
 		standard: ['maim', 'vertical-smash', 'dimension-break'],
-		power: [''],
+		power: [],
 		technical: ['maim', 'morning-glory'],
 		special: ['maim', 'morning-glory']
 	},
 	'morning-glory': {
 		type: 'axe',
-		standard: [''],
+		standard: [],
 		power: ['smash', 'hyper-hammer'],
 		technical: ['smash', 'reverse-delta'],
 		special: ['smash', 'reverse-delta']
 	},
 	'aimed-shot': {
 		type: 'bow',
-		standard: [''],
-		special: [''],
-		technical: [''],
-		dramatic: ['']
+		standard: [],
+		special: [],
+		technical: [],
+		dramatic: []
 	},
 	'shadow-weave': {
 		type: 'bow',
-		standard: [''],
-		special: [''],
+		standard: [],
+		special: [],
 		technical: ['aimed-shot', 'rapid-volley'],
-		dramatic: ['']
+		dramatic: []
 	},
 	'quick-nock': {
 		type: 'bow',
@@ -174,13 +174,13 @@ export const glimmers: { [key: string]: Glimmer } = {
 	'rapid-volley': {
 		type: 'bow',
 		standard: ['quick-nock'],
-		special: [''],
+		special: [],
 		technical: ['quick-nock'],
-		dramatic: ['']
+		dramatic: []
 	},
 	'incendiary-arrow': {
 		type: 'bow',
-		standard: [''],
+		standard: [],
 		special: ['aimed-shot', 'quick-nock'],
 		technical: ['quick-nock', 'rapid-volley'],
 		dramatic: ['aimed-shot', 'quick-nock']
@@ -188,69 +188,69 @@ export const glimmers: { [key: string]: Glimmer } = {
 	'id-break': {
 		type: 'bow',
 		standard: ['aimed-shot', 'quick-nock'],
-		special: [''],
-		technical: [''],
-		dramatic: ['']
+		special: [],
+		technical: [],
+		dramatic: []
 	},
 	'falling-phoenix': {
 		type: 'bow',
-		standard: [''],
-		special: [''],
+		standard: [],
+		special: [],
 		technical: ['shadow-weave'],
-		dramatic: ['']
+		dramatic: []
 	},
 	'plasma-shot': {
 		type: 'bow',
-		standard: [''],
-		special: [''],
-		technical: [''],
+		standard: [],
+		special: [],
+		technical: [],
 		dramatic: ['quick-nock', 'incendiary-arrow', 'rain-of-arrows', 'scarlet-ambitions-technique']
 	},
 	'rain-of-arrows': {
 		type: 'bow',
 		standard: ['rapid-volley', 'id-break'],
 		special: ['incendiary-arrow'],
-		technical: [''],
+		technical: [],
 		dramatic: ['incendiary-arrow']
 	},
 	'heart-seeker': {
 		type: 'bow',
 		standard: ['id-break', 'rain-of-arrows'],
 		special: ['incendiary-arrow', 'rain-of-arrows'],
-		technical: [''],
-		dramatic: ['']
+		technical: [],
+		dramatic: []
 	},
 	millionaire: {
 		type: 'bow',
-		standard: [''],
+		standard: [],
 		special: ['rain-of-arrows', 'heart-seeker'],
-		technical: [''],
+		technical: [],
 		dramatic: ['plasma-shot', 'rain-of-arrows']
 	},
 	roundhouse: {
 		type: 'club',
-		standard: [''],
-		technical: [''],
-		special: [''],
-		power: ['']
+		standard: [],
+		technical: [],
+		special: [],
+		power: []
 	},
 	block: {
 		type: 'club',
 		standard: ['roundhouse'],
-		technical: [''],
+		technical: [],
 		special: ['roundhouse'],
-		power: ['']
+		power: []
 	},
 	enkindle: {
 		type: 'club',
 		standard: ['roundhouse'],
-		technical: [''],
+		technical: [],
 		special: ['roundhouse'],
-		power: ['']
+		power: []
 	},
 	bonecrusher: {
 		type: 'club',
-		standard: [''],
+		standard: [],
 		technical: ['enkindle'],
 		special: ['roundhouse', 'shiversmash'],
 		power: ['roundhouse', 'shiversmash']
@@ -258,29 +258,29 @@ export const glimmers: { [key: string]: Glimmer } = {
 	'seismic-strike': {
 		type: 'club',
 		standard: ['enkindle'],
-		technical: [''],
-		special: [''],
-		power: ['blunt-interrupt']
+		technical: [],
+		special: [],
+		power: []
 	},
 	shiversmash: {
 		type: 'club',
-		standard: [''],
-		technical: [''],
+		standard: [],
+		technical: [],
 		special: ['roundhouse'],
 		power: ['roundhouse']
 	},
 	'gale-strike': {
 		type: 'club',
-		standard: [''],
+		standard: [],
 		technical: ['enkindle'],
-		special: [''],
-		power: ['']
+		special: [],
+		power: []
 	},
 	'rock-splitter': {
 		type: 'club',
-		standard: [''],
-		technical: [''],
-		special: [''],
+		standard: [],
+		technical: [],
+		special: [],
 		power: ['bonecrusher', 'grand-slam']
 	},
 	'grand-slam': {
@@ -294,19 +294,19 @@ export const glimmers: { [key: string]: Glimmer } = {
 		type: 'club',
 		standard: ['grand-slam'],
 		technical: ['grand-slam'],
-		special: [''],
-		power: ['']
+		special: [],
+		power: []
 	},
 	'maniac-blossom': {
 		type: 'club',
-		standard: [''],
-		technical: [''],
+		standard: [],
+		technical: [],
 		special: ['bonecrusher'],
 		power: ['bonecrusher']
 	},
 	'dual-cross-cut': {
 		type: 'twinSwords',
-		'dual-wield': ['']
+		'dual-wield': []
 	},
 	'dual-whirlwind': {
 		type: 'twinSwords',
@@ -318,114 +318,114 @@ export const glimmers: { [key: string]: Glimmer } = {
 	},
 	'smash-gs': {
 		type: 'greatsword',
-		standard: [''],
-		power: [''],
-		katana: [''],
-		technical: [''],
-		'true-katana': ['']
+		standard: [],
+		power: [],
+		katana: [],
+		technical: [],
+		'true-katana': []
 	},
 	deflect: {
 		type: 'greatsword',
 		standard: ['optical-slash'],
 		power: ['downswing'],
-		katana: [''],
-		technical: [''],
-		'true-katana': ['']
+		katana: [],
+		technical: [],
+		'true-katana': []
 	},
 	blizzard: {
 		type: 'greatsword',
-		standard: [''],
-		power: [''],
-		katana: [''],
-		technical: [''],
+		standard: [],
+		power: [],
+		katana: [],
+		technical: [],
 		'true-katana': ['flowing-slash', 'eclipse', 'scattered-petals']
 	},
 	'flowing-slash': {
 		type: 'greatsword',
 		standard: ['smash'],
-		power: [''],
+		power: [],
 		katana: ['smash'],
 		technical: ['smash'],
-		'true-katana': ['']
+		'true-katana': []
 	},
 	downswing: {
 		type: 'greatsword',
-		standard: [''],
+		standard: [],
 		power: ['smash'],
-		katana: [''],
-		technical: [''],
-		'true-katana': ['']
+		katana: [],
+		technical: [],
+		'true-katana': []
 	},
 	'optical-slash': {
 		type: 'greatsword',
 		standard: ['flowing-slash'],
-		power: [''],
+		power: [],
 		katana: ['flowing-slash'],
 		technical: ['flowing-slash'],
-		'true-katana': ['']
+		'true-katana': []
 	},
 	'lunar-blade': {
 		type: 'greatsword',
-		standard: [''],
-		power: [''],
-		katana: [''],
-		technical: [''],
+		standard: [],
+		power: [],
+		katana: [],
+		technical: [],
 		'true-katana': ['blizzard', 'flowing-slash', 'eclipse', 'scattered-petals']
 	},
 	gravedigger: {
 		type: 'greatsword',
 		standard: ['smash', 'flowing-slash'],
 		power: ['downswing', 'vandalize'],
-		katana: [''],
+		katana: [],
 		technical: ['smash', 'flowing-slash'],
-		'true-katana': ['']
+		'true-katana': []
 	},
 	'headwind-rush': {
 		type: 'greatsword',
-		standard: [''],
-		power: [''],
-		katana: [''],
+		standard: [],
+		power: [],
+		katana: [],
 		technical: ['flowing-slash', 'gravedigger', 'waning-moon'],
-		'true-katana': ['']
+		'true-katana': []
 	},
 	vandalize: {
 		type: 'greatsword',
-		standard: [''],
+		standard: [],
 		power: ['smash', 'gravedigger'],
-		katana: [''],
-		technical: [''],
-		'true-katana': ['']
+		katana: [],
+		technical: [],
+		'true-katana': []
 	},
 	'shadow-reversal': {
 		type: 'greatsword',
-		standard: [''],
-		power: [''],
+		standard: [],
+		power: [],
 		katana: ['wheel-swing'],
-		technical: [''],
-		'true-katana': ['']
+		technical: [],
+		'true-katana': []
 	},
 	eclipse: {
 		type: 'greatsword',
-		standard: [''],
-		power: [''],
-		katana: [''],
-		technical: [''],
+		standard: [],
+		power: [],
+		katana: [],
+		technical: [],
 		'true-katana': ['flowing-slash', 'lunar-blade', 'scattered-petals']
 	},
 	'wheel-swing': {
 		type: 'greatsword',
-		standard: [''],
-		power: [''],
+		standard: [],
+		power: [],
 		katana: ['smash', 'flowing-slash'],
-		technical: [''],
-		'true-katana': ['']
+		technical: [],
+		'true-katana': []
 	},
 	'scattered-petals': {
 		type: 'greatsword',
-		standard: [''],
-		power: [''],
+		standard: [],
+		power: [],
 		katana: ['wheel-swing'],
-		technical: [''],
+		technical: [],
 		'true-katana': ['eclipse']
 	},
 	'waning-moon': {
@@ -433,62 +433,62 @@ export const glimmers: { [key: string]: Glimmer } = {
 		standard: ['gravedigger'],
 		power: ['gravedigger'],
 		katana: ['gravedigger'],
-		technical: [''],
-		'true-katana': ['']
+		technical: [],
+		'true-katana': []
 	},
 	'sonic-slash': {
 		type: 'sword',
-		standard: [''],
-		technical: [''],
-		curved: [''],
-		special: ['']
+		standard: [],
+		technical: [],
+		curved: [],
+		special: []
 	},
 	'brusque-slice': {
 		type: 'sword',
 		standard: ['sonic-slash'],
 		technical: ['sonic-slash'],
-		curved: ['sonic-slash', '-demilune'],
-		special: ['']
+		curved: ['sonic-slash', 'demilune'],
+		special: []
 	},
 	rampart: {
 		type: 'sword',
 		standard: ['brusque-slice'],
-		technical: ['sonic-slash', '-brusque-slice'],
-		curved: [''],
+		technical: ['sonic-slash', 'brusque-slice'],
+		curved: [],
 		special: ['sonic-slash']
 	},
 	'sonic-blade': {
 		type: 'sword',
-		standard: ['sonic-slash', '-brusque-slice'],
-		technical: ['sonic-slash', '-brusque-slice'],
-		curved: [''],
-		special: ['']
+		standard: ['sonic-slash', 'brusque-slice'],
+		technical: ['sonic-slash', 'brusque-slice'],
+		curved: [],
+		special: []
 	},
 	demilune: {
 		type: 'sword',
-		standard: [''],
-		technical: [''],
-		curved: ['brusque-slice', '-heaven-and-earth'],
-		special: ['']
+		standard: [],
+		technical: [],
+		curved: ['brusque-slice', 'heaven-and-earth'],
+		special: []
 	},
 	'rising-nova': {
 		type: 'sword',
 		standard: ['sonic-slash'],
-		technical: [''],
+		technical: [],
 		curved: ['sonic-slash'],
-		special: ['']
+		special: []
 	},
 	'heaven-and-earth': {
 		type: 'sword',
-		standard: ['sonic-slash', '-rising-nova'],
-		technical: ['sonic-slash', '-brusque-slice'],
-		curved: [''],
-		special: ['']
+		standard: ['sonic-slash', 'rising-nova'],
+		technical: ['sonic-slash', 'brusque-slice'],
+		curved: [],
+		special: []
 	},
 	apathy: {
 		type: 'sword',
 		standard: ['heaven-and-earth'],
-		technical: [''],
+		technical: [],
 		curved: ['rosario-impale'],
 		special: ['counter-technique']
 	},
@@ -496,40 +496,40 @@ export const glimmers: { [key: string]: Glimmer } = {
 		type: 'sword',
 		standard: ['sonic-blade'],
 		technical: ['sonic-blade'],
-		curved: [''],
-		special: ['']
+		curved: [],
+		special: []
 	},
 	'thousand-blades': {
 		type: 'sword',
 		standard: ['triple-thrust'],
-		technical: [''],
+		technical: [],
 		curved: ['heaven-and-earth'],
-		special: ['']
+		special: []
 	},
 	'halting-blade': {
 		type: 'sword',
-		standard: [''],
-		technical: [''],
-		curved: ['demilune', '-halting-blade'],
-		special: ['']
+		standard: [],
+		technical: [],
+		curved: ['demilune', 'halting-blade'],
+		special: []
 	},
 	'multi-way': {
 		type: 'sword',
 		standard: ['heaven-and-earth'],
-		technical: [''],
-		curved: [''],
+		technical: [],
+		curved: [],
 		special: ['rosario-impale']
 	},
 	'rosario-impale': {
 		type: 'sword',
-		standard: [''],
-		technical: [''],
-		curved: [''],
-		special: ['sonic-slash', '-rising-nova']
+		standard: [],
+		technical: [],
+		curved: [],
+		special: ['sonic-slash', 'rising-nova']
 	},
 	punch: {
 		type: 'martialArts',
-		standard: ['']
+		standard: []
 	},
 	tumble: {
 		type: 'martialArts',
@@ -537,11 +537,11 @@ export const glimmers: { [key: string]: Glimmer } = {
 	},
 	chop: {
 		type: 'martialArts',
-		standard: ['punch', 'niagra-buster', 'triple-dragon']
+		standard: ['punch', 'niagara-buster', 'triple-dragon']
 	},
 	slide: {
 		type: 'martialArts',
-		standard: ['punch', 'raksha', 'niagra-buster']
+		standard: ['punch', 'raksha', 'niagara-buster']
 	},
 	'jolt-counter': {
 		type: 'martialArts',
@@ -573,172 +573,172 @@ export const glimmers: { [key: string]: Glimmer } = {
 	},
 	'rising-sun': {
 		type: 'martialArts',
-		standard: ['raksha', 'niagra-buster', 'triple-dragon']
+		standard: ['raksha', 'niagara-buster', 'triple-dragon']
 	},
 	'quick-thrust': {
 		type: 'shortSword',
-		standard: [''],
-		special: [''],
-		technical: [''],
-		dramatic: ['']
+		standard: [],
+		special: [],
+		technical: [],
+		dramatic: []
 	},
 	mesmerize: {
 		type: 'shortSword',
 		standard: ['apid-venom', 'southern-cross'],
 		special: ['quick-thrust', 'apid-venom'],
-		technical: [''],
-		dramatic: ['']
+		technical: [],
+		dramatic: []
 	},
 	lightspeed: {
 		type: 'shortSword',
 		standard: ['quick-thrust'],
-		special: [''],
+		special: [],
 		technical: ['quick-thrust'],
 		dramatic: ['quick-thrust']
 	},
 	matador: {
 		type: 'shortSword',
-		standard: [''],
+		standard: [],
 		special: ['quick-thrust'],
-		technical: [''],
-		dramatic: ['']
+		technical: [],
+		dramatic: []
 	},
 	'apid-venom': {
 		type: 'shortSword',
 		standard: ['quick-thrust', 'piercing-lightning'],
 		special: ['quick-thrust'],
-		technical: [''],
-		dramatic: ['']
+		technical: [],
+		dramatic: []
 	},
 	'crystalline-carve': {
 		type: 'shortSword',
-		standard: [''],
+		standard: [],
 		special: ['apid-venom'],
 		technical: ['quick-thrust', 'piercing-lightning'],
 		dramatic: ['quick-thrust', 'piercing-lightning']
 	},
 	'shocking-rush': {
 		type: 'shortSword',
-		standard: [''],
-		special: [''],
+		standard: [],
+		special: [],
 		technical: ['quick-thrust', 'crystalline-carve'],
-		dramatic: ['']
+		dramatic: []
 	},
 	'piercing-lightning': {
 		type: 'shortSword',
 		standard: ['quick-thrust', 'apid-venom'],
-		special: [''],
-		technical: [''],
+		special: [],
+		technical: [],
 		dramatic: ['shocking-rush', 'eulogy']
 	},
 	'golden-note': {
 		type: 'shortSword',
-		standard: [''],
+		standard: [],
 		special: ['crystalline-carve'],
-		technical: [''],
-		dramatic: ['']
+		technical: [],
+		dramatic: []
 	},
 	eulogy: {
 		type: 'shortSword',
-		standard: [''],
-		special: [''],
-		technical: [''],
+		standard: [],
+		special: [],
+		technical: [],
 		dramatic: ['crystalline-carve']
 	},
 	'southern-cross': {
 		type: 'shortSword',
 		standard: ['piercing-lightning'],
-		special: [''],
+		special: [],
 		technical: ['piercing-lightning'],
 		dramatic: ['piercing-lightning']
 	},
 	pierce: {
 		type: 'spear',
-		standard: [''],
-		thrusting: [''],
-		technical: [''],
-		special: ['']
+		standard: [],
+		thrusting: [],
+		technical: [],
+		special: []
 	},
 	'split-cranium': {
 		type: 'spear',
 		standard: ['pierce', 'spiral-charge'],
 		thrusting: ['pierce', 'spiral-charge'],
-		technical: [''],
+		technical: [],
 		special: ['pierce', 'spiral-charge']
 	},
 	shelter: {
 		type: 'spear',
 		standard: ['mizuchi', 'spiral-charge'],
 		thrusting: ['mizuchi', 'spiral-charge'],
-		technical: [''],
+		technical: [],
 		special: ['mizuchi', 'spiral-charge']
 	},
 	sweep: {
 		type: 'spear',
 		standard: ['pierce', 'spiral-charge'],
-		thrusting: [''],
+		thrusting: [],
 		technical: ['pierce', 'reaper'],
-		special: ['']
+		special: []
 	},
 	reaper: {
 		type: 'spear',
-		standard: [''],
-		thrusting: [''],
+		standard: [],
+		thrusting: [],
 		technical: ['pierce', 'sweep'],
-		special: ['']
+		special: []
 	},
 	aim: {
 		type: 'spear',
 		standard: ['pierce', 'spiral-charge'],
-		thrusting: [''],
-		technical: [''],
-		special: ['']
+		thrusting: [],
+		technical: [],
+		special: []
 	},
 	mizuchi: {
 		type: 'spear',
 		standard: ['split-cranium'],
 		thrusting: ['split-cranium', 'aim'],
-		technical: [''],
+		technical: [],
 		special: ['split-cranium', 'divine-lancer']
 	},
 	'spiral-charge': {
 		type: 'spear',
 		standard: ['split-cranium', 'sweep', 'mizuchi'],
 		thrusting: ['split-cranium', 'aim', 'mizuchi'],
-		technical: [''],
+		technical: [],
 		special: ['split-cranium', 'mizuchi']
 	},
 	'divine-lancer': {
 		type: 'spear',
-		standard: [''],
-		thrusting: [''],
-		technical: [''],
+		standard: [],
+		thrusting: [],
+		technical: [],
 		special: ['split-cranium', 'mizuchi', 'arm-of-light']
 	},
 	'arm-of-light': {
 		type: 'spear',
 		standard: ['mizuchi'],
-		thrusting: [''],
-		technical: [''],
+		thrusting: [],
+		technical: [],
 		special: ['mizuchi']
 	},
 	windmill: {
 		type: 'spear',
-		standard: [''],
-		thrusting: [''],
+		standard: [],
+		thrusting: [],
 		technical: ['sweep', 'reaper'],
-		special: ['']
+		special: []
 	},
 	triumverate: {
 		type: 'spear',
 		standard: ['sweep'],
-		thrusting: [''],
+		thrusting: [],
 		technical: ['sweep', 'reaper', 'arm-of-light'],
-		special: ['']
+		special: []
 	},
 	'focusing-strike': {
 		type: 'staff',
-		standard: ['']
+		standard: []
 	},
 	'shattered-dreams': {
 		type: 'staff',
