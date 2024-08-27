@@ -54,5 +54,5 @@
 			</table>
 		</div>
 	{/if}
-	<a href="/retinue/{$page.params.id}/add-member" class="btn btn-outline">Add a Member</a>
+	<a href="/retinue/{$page.params.id}/character/new" class="btn btn-outline">Add a Member</a>
 {/if}
