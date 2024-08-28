@@ -1,6 +1,7 @@
 import { abilities, type Ability } from './data/abilities';
-import { roles, characterRoles, type Role } from '$lib/data/roles';
+import { roles, type Role } from '$lib/data/roles';
 import { characters } from '$lib/data/characters';
+import { glimmerChart } from '$lib/data/glimmers';
 
 export interface AbilityData {
 	ability: Ability;
@@ -11,80 +12,6 @@ export interface AbilityData {
 export interface RoleData {
 	role: Role;
 	unlocked: boolean;
-}
-
-export class CharacterBuild {
-	characterRoles: string[];
-
-	constructor(
-		public character: string,
-		private learnableRoles: string[] = [],
-		private learnedAbilities: string[] = [],
-		private requiredAbilities: string[] = []
-	) {
-		this.characterRoles = characterRoles.filter((e) => e.character === character).map((e) => e.id);
-	}
-
-	get roles() {
-		const roleData: RoleData[] = [];
-		const roleIds = [...this.learnableRoles, ...this.characterRoles];
-		roleIds.forEach((roleId) => {
-			const role = roles[roleId];
-			if (role.type === 'character') {
-				roleData.push({
-					unlocked: true,
-					role
-				});
-			} else {
-				const unlocked = role.requiredTechs.every((ability) =>
-					this.learnedAbilities.includes(ability)
-				);
-				roleData.push({
-					unlocked,
-					role
-				});
-			}
-		});
-		return roleData;
-	}
-
-	addRole(roleId: string) {
-		this.learnableRoles.push(roleId);
-	}
-
-	removeRole(roleId: string) {
-		this.learnableRoles = this.learnableRoles.filter((id) => id !== roleId);
-	}
-
-	get abilities() {
-		const abilitySet: Set<string> = new Set();
-		this.requiredAbilities.forEach((id) => {
-			abilitySet.add(id);
-		});
-		this.learnedAbilities.forEach((id) => {
-			abilitySet.add(id);
-		});
-		const abilityData: AbilityData[] = [];
-		abilitySet.forEach((id) => {
-			const ability = abilities[id];
-			const learned = this.learnedAbilities.includes(id);
-			const required = this.requiredAbilities.includes(id);
-			abilityData.push({
-				ability,
-				learned,
-				required
-			});
-		});
-		return abilityData;
-	}
-
-	addAbility(abilityId: string) {
-		this.learnedAbilities.push(abilityId);
-	}
-
-	removeAbility(abilityId: string) {
-		this.learnedAbilities = this.learnedAbilities.filter((id) => id !== abilityId);
-	}
 }
 
 export function getAllRoles(
@@ -110,11 +37,22 @@ export function getAllRoles(
 			});
 		}
 	});
-	return roleData;
+	return roleData
+		.map((r) => {
+			const { type, id, role, description } = r.role;
+			return {
+				unlocked: r.unlocked,
+				type,
+				id,
+				name: role,
+				description
+			};
+		})
+		.sort((a, b) => (a.name > b.name ? 1 : -1));
 }
 
 export function getAbilities(learnableRoles: string[] = [], learnedAbilities: string[] = []) {
-	const requiredAbilities = getRequiredAbilities(learnableRoles);
+	const requiredAbilities = Object.keys(getRequiredAbilities(learnableRoles));
 	const abilitySet: Set<string> = new Set();
 	requiredAbilities.forEach((id) => {
 		abilitySet.add(id);
@@ -136,24 +74,44 @@ export function getAbilities(learnableRoles: string[] = [], learnedAbilities: st
 	return abilityData;
 }
 
+type AbilityMap = { [key: string]: { id: string; name: string }[] };
 export function getRequiredAbilities(learnableRoles: string[] = []) {
-	const abilitySet: Set<string> = new Set();
+	const abilityMap: AbilityMap = {};
 	learnableRoles.forEach((roleId) => {
 		const role = roles[roleId];
 		if (role && role.type !== 'character') {
-			role.requiredTechs.forEach((ability) => {
-				abilitySet.add(ability);
+			role.requiredTechs.forEach((abilityId) => {
+				if (!abilityMap[abilityId]) {
+					abilityMap[abilityId] = [];
+				}
+				abilityMap[abilityId].push({ id: roleId, name: role.role });
 			});
 		}
 	});
-	return Array.from(abilitySet);
+	return abilityMap;
 }
 
 export function getRemainingAbilities(roles: string[], learnedAbilities: string[]) {
 	const requiredAbilities = getRequiredAbilities(roles);
-	const remainingAbilities = requiredAbilities.filter((e) => !learnedAbilities.includes(e));
+	const remainingAbilities = Object.keys(requiredAbilities).filter(
+		(e) => !learnedAbilities.includes(e)
+	);
 	return remainingAbilities
 		.map((abilityId) => abilities[abilityId])
+		.map((ability) => {
+			const glimmers = glimmerChart[ability.id];
+			let glimmeredFrom: { weaponType?: string; abilities: Ability[] }[] = [];
+			if (glimmers) {
+				glimmeredFrom = glimmers.glimmers
+					.filter((e) => e.abilityIds.length)
+					.map((e) => ({
+						weaponType: e.weaponType,
+						abilities: e.abilityIds.map((id) => abilities[id])
+					}));
+			}
+			const roles = requiredAbilities[ability.id];
+			return { ...ability, glimmeredFrom, roles };
+		})
 		.sort((ab1, ab2) => {
 			if (ab1.type === ab2.type) {
 				return ab1.name > ab2.name ? 1 : -1;
@@ -168,7 +126,8 @@ export function getCharacterInfo(characterId: string, roles: string[], learnedAb
 		throw new Error(`Character not found: ${characterId}`);
 	}
 	const allRoles = getAllRoles(characterId, roles, learnedAbilities);
+
 	const remainingAbilities = getRemainingAbilities(roles, learnedAbilities);
-	return { character, roles: allRoles, remainingAbilities };
+	return { id: character.id, name: character.name, roles: allRoles, remainingAbilities };
 }
 export type CharacterInfo = ReturnType<typeof getCharacterInfo>;

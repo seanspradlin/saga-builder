@@ -1,3 +1,5 @@
+import type { WeaponType } from '$lib/data/techs';
+
 type GreatswordGlimmer = {
 	type: 'greatsword';
 	standard: string[];
@@ -18,7 +20,7 @@ type TwinSwordsGlimmer = {
 	'dual-wield': string[];
 };
 type ShortSwordGlimmer = {
-	type: 'shortSword';
+	type: 'shortsword';
 	standard: string[];
 	dramatic: string[];
 	technical: string[];
@@ -96,7 +98,7 @@ export const glimmers: { [key: string]: Glimmer } = {
 	},
 	'vertical-smash': {
 		type: 'axe',
-		standard: ['treecleaver', 'dimension-break'],
+		standard: ['treecleaver', 'dimensional-break'],
 		power: ['treecleaver'],
 		technical: [],
 		special: []
@@ -138,7 +140,7 @@ export const glimmers: { [key: string]: Glimmer } = {
 	},
 	'reverse-delta': {
 		type: 'axe',
-		standard: ['maim', 'vertical-smash', 'dimension-break'],
+		standard: ['maim', 'vertical-smash', 'dimensional-break'],
 		power: [],
 		technical: ['maim', 'morning-glory'],
 		special: ['maim', 'morning-glory']
@@ -576,77 +578,77 @@ export const glimmers: { [key: string]: Glimmer } = {
 		standard: ['raksha', 'niagara-buster', 'triple-dragon']
 	},
 	'quick-thrust': {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: [],
 		special: [],
 		technical: [],
 		dramatic: []
 	},
 	mesmerize: {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: ['apid-venom', 'southern-cross'],
 		special: ['quick-thrust', 'apid-venom'],
 		technical: [],
 		dramatic: []
 	},
 	lightspeed: {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: ['quick-thrust'],
 		special: [],
 		technical: ['quick-thrust'],
 		dramatic: ['quick-thrust']
 	},
 	matador: {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: [],
 		special: ['quick-thrust'],
 		technical: [],
 		dramatic: []
 	},
 	'apid-venom': {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: ['quick-thrust', 'piercing-lightning'],
 		special: ['quick-thrust'],
 		technical: [],
 		dramatic: []
 	},
 	'crystalline-carve': {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: [],
 		special: ['apid-venom'],
 		technical: ['quick-thrust', 'piercing-lightning'],
 		dramatic: ['quick-thrust', 'piercing-lightning']
 	},
 	'shocking-rush': {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: [],
 		special: [],
 		technical: ['quick-thrust', 'crystalline-carve'],
 		dramatic: []
 	},
 	'piercing-lightning': {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: ['quick-thrust', 'apid-venom'],
 		special: [],
 		technical: [],
 		dramatic: ['shocking-rush', 'eulogy']
 	},
 	'golden-note': {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: [],
 		special: ['crystalline-carve'],
 		technical: [],
 		dramatic: []
 	},
 	eulogy: {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: [],
 		special: [],
 		technical: [],
 		dramatic: ['crystalline-carve']
 	},
 	'southern-cross': {
-		type: 'shortSword',
+		type: 'shortsword',
 		standard: ['piercing-lightning'],
 		special: [],
 		technical: ['piercing-lightning'],
@@ -749,3 +751,25 @@ export const glimmers: { [key: string]: Glimmer } = {
 		standard: ['focusing-strike', 'shattered-dreams']
 	}
 };
+
+export type GlimmerDetails = {
+	weaponType?: string;
+	abilityIds: string[];
+};
+export type GlimmerChart = {
+	[key: string]: {
+		type: WeaponType;
+		glimmers: GlimmerDetails[];
+	};
+};
+export const glimmerChart: GlimmerChart = {};
+Object.keys(glimmers).forEach((key) => {
+	const { type, ...entries } = glimmers[key];
+	const g = Object.entries(entries).map(([key, val]) => {
+		return { weaponType: key, abilityIds: val };
+	});
+	glimmerChart[key] = {
+		type,
+		glimmers: g
+	};
+});

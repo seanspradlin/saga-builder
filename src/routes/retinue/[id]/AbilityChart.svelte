@@ -7,9 +7,9 @@
 </script>
 
 {#if glimmer}
-	<table class="table table-xs">
+	<table class="table table-xs w-full">
 		{#each Object.keys(glimmer) as key (key)}
-			{#if key !== 'type'}
+			{#if key !== 'type' && glimmer[key].length}
 				<tr>
 					<td class="capitalize font-bold">{key}</td>
 					<td>
@@ -18,7 +18,7 @@
 								const a = abilities[id];
 								if (!a) {
 									console.error('No ability found for ', id);
-									return 'null';
+									return '';
 								}
 								return a.name;
 							})

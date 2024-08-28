@@ -3,7 +3,7 @@
  * https://saga.fandom.com/wiki/List_of_SaGa_Scarlet_Grace_techs
  */
 
-type WeaponType =
+export type WeaponType =
 	| 'greatsword'
 	| 'sword'
 	| 'twinSwords'
