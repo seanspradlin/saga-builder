@@ -6,6 +6,7 @@ import {
 	connectAuthEmulator,
 	createUserWithEmailAndPassword,
 	linkWithCredential,
+	linkWithPopup,
 	signInWithPopup,
 	GoogleAuthProvider,
 	FacebookAuthProvider,
@@ -34,6 +35,21 @@ export const createUser = async (email: string, password: string) => {
 	return linkWithCredential(auth.currentUser, EmailAuthProvider.credential(email, password));
 };
 
-export const loginWithGoogle = async () => signInWithPopup(auth, googleAuthProvider);
-export const loginWithFacebook = async () => signInWithPopup(auth, facebookAuthProvider);
-export const loginWithTwitter = async () => signInWithPopup(auth, twitterAuthProvider);
+export const loginWithGoogle = async () => {
+	if (!auth.currentUser) {
+		return signInWithPopup(auth, googleAuthProvider);
+	}
+	return linkWithPopup(auth.currentUser, googleAuthProvider);
+};
+export const loginWithFacebook = async () => {
+	if (!auth.currentUser) {
+		return signInWithPopup(auth, facebookAuthProvider);
+	}
+	return linkWithPopup(auth.currentUser, facebookAuthProvider);
+};
+export const loginWithTwitter = async () => {
+	if (!auth.currentUser) {
+		return signInWithPopup(auth, twitterAuthProvider);
+	}
+	return linkWithPopup(auth.currentUser, twitterAuthProvider);
+};
