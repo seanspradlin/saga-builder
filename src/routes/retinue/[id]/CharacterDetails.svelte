@@ -7,9 +7,9 @@
 	export let character: CharacterInfo;
 </script>
 
-<div class="grid grid-cols-4 gap-4">
-	<div class="grid grid-cols-subgrid col-span-4 p-2 border-b-2">
-		<div class="flex items-center gap-2 col-span-2">
+<div class="grid grid-cols-5 gap-4">
+	<div class="grid grid-cols-subgrid col-span-5 p-2 border-b-2">
+		<div class="flex items-center gap-2 col-span-3">
 			<a href="/retinue/{$page.params.id}/character/{character.id}" class="font-bold text-xl"
 				>{character.name}</a
 			>
@@ -23,16 +23,18 @@
 	</div>
 
 	<div class="font-bold">Ability</div>
+	<div class="font-bold">Weapon</div>
 	<div class="font-bold">Roles</div>
 	<div class="font-bold col-span-2">Glimmer Chart</div>
 
 	{#each character.remainingAbilities as ability (ability.id)}
 		<div class="font-bold col-start-1">{ability.name}</div>
+		<div class="font-bold capitalize">{ability.type}</div>
 		<div>
 			{ability.roles.map((e) => e.name).join(', ')}
 		</div>
 		{#if ability.glimmeredFrom.length}
-			<div class="grid grid-cols-subgrid col-start-3 col-span-2 bg-base-300 rounded shadow-lg p-2">
+			<div class="grid grid-cols-subgrid col-start-4 col-span-2 bg-base-300 rounded shadow-lg p-2">
 				<div class="italic">Weapon Type</div>
 				<div class="italic">Name</div>
 				{#each ability.glimmeredFrom as chart}

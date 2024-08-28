@@ -3,8 +3,6 @@
 	import { page } from '$app/stores';
 	import { getCharacterInfo } from '$lib/character-build';
 	import CharacterDetails from './CharacterDetails.svelte';
-	// import RoleBadge from './RoleBadge.svelte';
-	// import AbilityChart from './AbilityChart.svelte';
 
 	const retinue = retinueStore($page.params.id);
 </script>
