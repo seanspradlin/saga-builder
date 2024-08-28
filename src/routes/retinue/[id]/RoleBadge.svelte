@@ -3,6 +3,6 @@
 	export let unlocked = false;
 </script>
 
-<div class="badge badge-outline {unlocked ? 'badge-success' : 'badge-error'}">
+<div class="badge {unlocked ? 'badge-primary' : ''}">
 	{role}
 </div>
