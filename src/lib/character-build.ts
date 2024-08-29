@@ -104,10 +104,18 @@ export function getRemainingAbilities(roles: string[], learnedAbilities: string[
 			if (glimmers) {
 				glimmeredFrom = glimmers.glimmers
 					.filter((e) => e.abilityIds.length)
-					.map((e) => ({
-						weaponType: e.weaponType,
-						abilities: e.abilityIds.map((id) => abilities[id])
-					}));
+					.map((e) => {
+						return {
+							weaponType: e.weaponType,
+							abilities: e.abilityIds.map((id) => {
+								const ab = abilities[id];
+								if (!ab) {
+									console.error(`No ability found with id "${id}"`);
+								}
+								return ab;
+							})
+						};
+					});
 			}
 			const roles = requiredAbilities[ability.id];
 			return { ...ability, glimmeredFrom, roles };

@@ -113,15 +113,15 @@ export const glimmers: { [key: string]: Glimmer } = {
 	'power-disruptor': {
 		type: 'axe',
 		standard: [],
-		power: ['smash', 'maim'],
+		power: ['smash-axe', 'maim'],
 		technical: [],
-		special: ['smash', 'maim']
+		special: ['smash-axe', 'maim']
 	},
 	'hyper-hammer': {
 		type: 'axe',
 		standard: ['vertical-smash'],
 		power: [],
-		technical: ['smash', 'vertical-smash'],
+		technical: ['smash-axe', 'vertical-smash'],
 		special: []
 	},
 	'unbridled-frenzy': {
@@ -148,9 +148,9 @@ export const glimmers: { [key: string]: Glimmer } = {
 	'morning-glory': {
 		type: 'axe',
 		standard: [],
-		power: ['smash', 'hyper-hammer'],
-		technical: ['smash', 'reverse-delta'],
-		special: ['smash', 'reverse-delta']
+		power: ['smash-axe', 'hyper-hammer'],
+		technical: ['smash-axe', 'reverse-delta'],
+		special: ['smash-axe', 'reverse-delta']
 	},
 	'aimed-shot': {
 		type: 'bow',
@@ -344,16 +344,16 @@ export const glimmers: { [key: string]: Glimmer } = {
 	},
 	'flowing-slash': {
 		type: 'greatsword',
-		standard: ['smash'],
+		standard: ['smash-gs'],
 		power: [],
-		katana: ['smash'],
-		technical: ['smash'],
+		katana: ['smash-gs'],
+		technical: ['smash-gs'],
 		'true-katana': []
 	},
 	downswing: {
 		type: 'greatsword',
 		standard: [],
-		power: ['smash'],
+		power: ['smash-gs'],
 		katana: [],
 		technical: [],
 		'true-katana': []
@@ -376,10 +376,10 @@ export const glimmers: { [key: string]: Glimmer } = {
 	},
 	gravedigger: {
 		type: 'greatsword',
-		standard: ['smash', 'flowing-slash'],
+		standard: ['smash-gs', 'flowing-slash'],
 		power: ['downswing', 'vandalize'],
 		katana: [],
-		technical: ['smash', 'flowing-slash'],
+		technical: ['smash-gs', 'flowing-slash'],
 		'true-katana': []
 	},
 	'headwind-rush': {
@@ -393,7 +393,7 @@ export const glimmers: { [key: string]: Glimmer } = {
 	vandalize: {
 		type: 'greatsword',
 		standard: [],
-		power: ['smash', 'gravedigger'],
+		power: ['smash-gs', 'gravedigger'],
 		katana: [],
 		technical: [],
 		'true-katana': []
@@ -418,7 +418,7 @@ export const glimmers: { [key: string]: Glimmer } = {
 		type: 'greatsword',
 		standard: [],
 		power: [],
-		katana: ['smash', 'flowing-slash'],
+		katana: ['smash-gs', 'flowing-slash'],
 		technical: [],
 		'true-katana': []
 	},
