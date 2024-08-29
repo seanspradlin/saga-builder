@@ -27,7 +27,8 @@ export async function createNewRetinue(name: string) {
 	if (!auth.currentUser) {
 		throw new Error('User not logged in');
 	}
-	const docRef = await addDoc(collection(firestore, 'users', auth.currentUser.uid, 'retinues'), {
+	const docRef = await addDoc(collection(firestore, 'retinues'), {
+		owner: auth.currentUser.uid,
 		name,
 		members: {}
 	});
@@ -38,9 +39,7 @@ export async function getRetinue(retinueId: string) {
 	if (!auth.currentUser) {
 		throw new Error('User not logged in');
 	}
-	const docSnap = await getDoc(
-		doc(firestore, 'users', auth.currentUser.uid, 'retinues', retinueId)
-	);
+	const docSnap = await getDoc(doc(firestore, 'retinues', retinueId));
 	if (docSnap.exists()) {
 		return docSnap.data();
 	}
@@ -54,7 +53,7 @@ export async function addMemberToRetinue(
 	if (!auth.currentUser) {
 		throw new Error('User not logged in');
 	}
-	const retinueRef = doc(firestore, 'users', auth.currentUser.uid, 'retinues', retinueId);
+	const retinueRef = doc(firestore, 'retinues', retinueId);
 	const retinueSnap = await getDoc(retinueRef);
 	if (retinueSnap.exists()) {
 		const retinue = retinueSnap.data();
@@ -76,7 +75,7 @@ export async function updateMember(
 	if (!auth.currentUser) {
 		throw new Error('User not logged in');
 	}
-	const retinueRef = doc(firestore, 'users', auth.currentUser.uid, 'retinues', retinueId);
+	const retinueRef = doc(firestore, 'retinues', retinueId);
 	const retinueSnap = await getDoc(retinueRef);
 	if (retinueSnap.exists()) {
 		const retinue = retinueSnap.data();

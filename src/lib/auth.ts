@@ -5,10 +5,13 @@ import {
 	getAuth,
 	connectAuthEmulator,
 	createUserWithEmailAndPassword,
+	linkWithCredential,
+	linkWithPopup,
 	signInWithPopup,
 	GoogleAuthProvider,
 	FacebookAuthProvider,
-	TwitterAuthProvider
+	TwitterAuthProvider,
+	EmailAuthProvider
 } from 'firebase/auth';
 
 export let auth: Auth;
@@ -25,9 +28,28 @@ if (browser) {
 	}
 }
 
-export const createUser = async (email: string, password: string) =>
-	createUserWithEmailAndPassword(auth, email, password);
+export const createUser = async (email: string, password: string) => {
+	if (!auth.currentUser) {
+		return createUserWithEmailAndPassword(auth, email, password);
+	}
+	return linkWithCredential(auth.currentUser, EmailAuthProvider.credential(email, password));
+};
 
-export const loginWithGoogle = async () => signInWithPopup(auth, googleAuthProvider);
-export const loginWithFacebook = async () => signInWithPopup(auth, facebookAuthProvider);
-export const loginWithTwitter = async () => signInWithPopup(auth, twitterAuthProvider);
+export const loginWithGoogle = async () => {
+	if (!auth.currentUser) {
+		return signInWithPopup(auth, googleAuthProvider);
+	}
+	return linkWithPopup(auth.currentUser, googleAuthProvider);
+};
+export const loginWithFacebook = async () => {
+	if (!auth.currentUser) {
+		return signInWithPopup(auth, facebookAuthProvider);
+	}
+	return linkWithPopup(auth.currentUser, facebookAuthProvider);
+};
+export const loginWithTwitter = async () => {
+	if (!auth.currentUser) {
+		return signInWithPopup(auth, twitterAuthProvider);
+	}
+	return linkWithPopup(auth.currentUser, twitterAuthProvider);
+};

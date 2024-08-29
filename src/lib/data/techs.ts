@@ -3,18 +3,20 @@
  * https://saga.fandom.com/wiki/List_of_SaGa_Scarlet_Grace_techs
  */
 
+export type WeaponType =
+	| 'greatsword'
+	| 'sword'
+	| 'twinSwords'
+	| 'shortsword'
+	| 'spear'
+	| 'axe'
+	| 'club'
+	| 'bow'
+	| 'martialArts'
+	| 'staff';
+
 export interface Tech {
-	type:
-		| 'greatsword'
-		| 'sword'
-		| 'twinSwords'
-		| 'shortsword'
-		| 'spear'
-		| 'axe'
-		| 'club'
-		| 'bow'
-		| 'martialArts'
-		| 'staff';
+	type: WeaponType;
 	id: string;
 	name: string;
 	description: string;
@@ -30,7 +32,7 @@ export interface Tech {
 export const techs: Tech[] = [
 	{
 		type: 'greatsword',
-		id: 'smash',
+		id: 'smash-gs',
 		name: 'Smash',
 		description: 'Smash a target from above, provoking it.',
 		cost: 2,
@@ -816,7 +818,7 @@ export const techs: Tech[] = [
 	},
 	{
 		type: 'axe',
-		id: 'smash',
+		id: 'smash-axe',
 		name: 'Smash',
 		description: 'Smash a target from above, provoking it.',
 		cost: 3,
