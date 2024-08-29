@@ -12,6 +12,7 @@ export interface Member {
 export interface Retinue {
 	name: string;
 	members: { [key: string]: Member };
+	owner: string;
 }
 
 export default function retinueStore(retinueId: string) {

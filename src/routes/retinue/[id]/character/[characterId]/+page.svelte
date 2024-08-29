@@ -2,6 +2,7 @@
 	import RoleSelection from '../RoleSelection.svelte';
 	import AbilitiesTable from '../AbilitiesTable.svelte';
 	import retinueStore from '$lib/stores/retinue';
+	import { user } from '$lib/stores/auth';
 	import { page } from '$app/stores';
 	import { getCharacterInfo, type CharacterInfo } from '$lib/character-build';
 	import { updateMember } from '$lib/firestore';
@@ -40,10 +41,12 @@
 {:else}
 	<form on:submit={handleSubmit} class="flex flex-col gap-4">
 		<div class="flex flex-row justify-between items-center">
-			<h2 class="text-2xl font-bold">{member.character.name}</h2>
+			<h2 class="text-2xl font-bold">{member.name}</h2>
 			<div class="flex flex-row gap-1 items-center">
 				<a href="/retinue/{$page.params.id}" class="btn btn-outline btn-sm">Back</a>
-				<button type="submit" class="btn btn-outline btn-sm">Save</button>
+				{#if $user?.uid === $retinue?.owner}
+					<button type="submit" class="btn btn-outline btn-sm">Save</button>
+				{/if}
 			</div>
 		</div>
 		<hr />

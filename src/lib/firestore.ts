@@ -75,7 +75,7 @@ export async function updateMember(
 	if (!auth.currentUser) {
 		throw new Error('User not logged in');
 	}
-	const retinueRef = doc(firestore, 'users', auth.currentUser.uid, 'retinues', retinueId);
+	const retinueRef = doc(firestore, 'retinues', retinueId);
 	const retinueSnap = await getDoc(retinueRef);
 	if (retinueSnap.exists()) {
 		const retinue = retinueSnap.data();
