@@ -206,7 +206,7 @@ export const glimmers: { [key: string]: Glimmer } = {
 		standard: [],
 		special: [],
 		technical: [],
-		dramatic: ['quick-nock', 'incendiary-arrow', 'rain-of-arrows', 'scarlet-ambitions-technique']
+		dramatic: ['quick-nock', 'incendiary-arrow', 'rain-of-arrows']
 	},
 	'rain-of-arrows': {
 		type: 'bow',
