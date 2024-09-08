@@ -1,36 +1,38 @@
+import { Ability } from './abilities';
 /**
  * Sourced from the Saga Fandom Wiki
  * https://saga.fandom.com/wiki/List_of_SaGa_Scarlet_Grace_roles
  */
 
-export interface Role {
+export type RoleType =
+	| 'character'
+	| 'attack'
+	| 'positioning'
+	| 'accuracy'
+	| 'bpBoosting'
+	| 'resistance'
+	| 'shield'
+	| 'targeting'
+	| 'delay'
+	| 'ailmentResistance'
+	| 'statusBoosting'
+	| 'attributeBoosting'
+	| 'benison'
+	| 'misc';
+export interface RoleData {
 	id: string;
 	role: string;
 	description: string;
-	type:
-		| 'character'
-		| 'attack'
-		| 'positioning'
-		| 'accuracy'
-		| 'bpBoosting'
-		| 'resistance'
-		| 'shield'
-		| 'targeting'
-		| 'delay'
-		| 'ailmentResistance'
-		| 'statusBoosting'
-		| 'attributeBoosting'
-		| 'benison'
-		| 'misc';
+	type: RoleType;
 }
 
-export interface CharacterRole extends Role {
+export interface CharacterRole extends RoleData {
 	character: string;
 	notes?: string;
 	type: 'character';
 }
 
-export interface LearnableRole extends Role {
+export interface LearnableRole extends RoleData {
 	requiredTechs: string[];
 	type:
 		| 'attack'
@@ -1245,3 +1247,35 @@ characterRoles.forEach((role) => {
 learnableRoles.forEach((role) => {
 	roles[role.id] = role;
 });
+
+export class Role {
+	private data: CharacterRole | LearnableRole;
+	constructor(public id: string) {
+		const data =
+			characterRoles.find((role) => role.id === id) ||
+			learnableRoles.find((role) => role.id === id);
+		if (!data) {
+			throw new Error(`No data found for role: ${id}`);
+		}
+		this.data = data;
+	}
+
+	get name() {
+		return this.data.role;
+	}
+
+	get requiredAbilities() {
+		if (this.data.type === 'character') {
+			return [];
+		}
+		return this.data.requiredTechs.map((abilityId) => new Ability(abilityId));
+	}
+
+	get description() {
+		return this.data.description;
+	}
+
+	get type() {
+		return this.data.type;
+	}
+}

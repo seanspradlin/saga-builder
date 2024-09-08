@@ -1,10 +1,10 @@
 <script lang="ts">
+	import type { Member } from '$lib/member';
 	import RoleBadge from './RoleBadge.svelte';
 	import { page } from '$app/stores';
-	import type { CharacterInfo } from '$lib/character-build';
 	import Fa from 'svelte-fa';
 	import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
-	export let character: CharacterInfo;
+	export let character: Member;
 </script>
 
 <div class="grid grid-cols-5 gap-4">
@@ -16,8 +16,8 @@
 			<button type="button"><Fa icon={faTrashCan} size="lg" /></button>
 		</div>
 		<div class="flex flex-row flex-wrap gap-1 items-center justify-self-end col-span-2 rounded">
-			{#each character.roles as role (role.id)}
-				<RoleBadge role={role.name} unlocked={role.unlocked} />
+			{#each character.roles as role (role.role.id)}
+				<RoleBadge role={role.role.name} unlocked={role.unlocked} />
 			{/each}
 		</div>
 	</div>
@@ -30,9 +30,7 @@
 	{#each character.remainingAbilities as ability (ability.id)}
 		<div class="font-bold col-start-1">{ability.name}</div>
 		<div class="font-bold capitalize">{ability.type}</div>
-		<div>
-			{ability.roles.map((e) => e.name).join(', ')}
-		</div>
+		<div></div>
 		{#if ability.glimmeredFrom.length}
 			<div class="grid grid-cols-subgrid col-start-4 col-span-2 bg-base-300 rounded shadow-lg p-2">
 				<div class="italic">Weapon Type</div>

@@ -1,4 +1,3 @@
-// import { firestore } from './firebase';
 import { app } from '$lib/firebase';
 import { browser } from '$app/environment';
 import {
@@ -7,10 +6,13 @@ import {
 	collection,
 	addDoc,
 	getDoc,
-	setDoc,
+	getDocs,
 	updateDoc,
 	doc,
-	Firestore
+	Firestore,
+	deleteDoc,
+	where,
+	query
 } from 'firebase/firestore';
 import { auth } from '$lib/auth';
 
@@ -35,6 +37,18 @@ export async function createNewRetinue(name: string) {
 	return docRef.id;
 }
 
+export async function listRetinues() {
+	if (!auth.currentUser) {
+		throw new Error('User not logged in');
+	}
+	const q = query(collection(firestore, 'retinues'), where('owner', '==', auth.currentUser.uid));
+	const querySnapshot = await getDocs(q);
+	const retinues = querySnapshot.docs.map((doc) => {
+		return { id: doc.id, name: doc.data().name };
+	});
+	return retinues;
+}
+
 export async function getRetinue(retinueId: string) {
 	if (!auth.currentUser) {
 		throw new Error('User not logged in');
@@ -45,27 +59,26 @@ export async function getRetinue(retinueId: string) {
 	}
 	return null;
 }
-
-export async function addMemberToRetinue(
-	retinueId: string,
-	character: { characterId: string; roles: string[]; abilities: string[] }
-) {
+export interface MemberData {
+	id: string;
+	roles: string[];
+	abilities: string[];
+}
+export async function getRetinueMembers(retinueId: string): Promise<MemberData[]> {
 	if (!auth.currentUser) {
 		throw new Error('User not logged in');
 	}
-	const retinueRef = doc(firestore, 'retinues', retinueId);
-	const retinueSnap = await getDoc(retinueRef);
-	if (retinueSnap.exists()) {
-		const retinue = retinueSnap.data();
-		if (!retinue.members[character.characterId]) {
-			retinue.members[character.characterId] = {
-				id: character.characterId,
-				roles: character.roles || [],
-				abilities: character.abilities || []
-			};
-			await setDoc(retinueRef, retinue);
-		}
-	}
+	const q = query(collection(firestore, 'retinues', retinueId, 'members'));
+	const querySnapshot = await getDocs(q);
+	const members = querySnapshot.docs.map((doc) => {
+		return { id: doc.id, ...doc.data() } as MemberData;
+	});
+	return members;
+}
+
+export async function removeMemberFromRetinue(retinueId: string, memberId: string) {
+	const docRef = doc(firestore, 'retinues', retinueId, 'members', memberId);
+	await deleteDoc(docRef);
 }
 
 export async function updateMember(
@@ -75,21 +88,13 @@ export async function updateMember(
 	if (!auth.currentUser) {
 		throw new Error('User not logged in');
 	}
-	const retinueRef = doc(firestore, 'retinues', retinueId);
-	const retinueSnap = await getDoc(retinueRef);
+	const memberRef = doc(firestore, 'retinues', retinueId, 'members', character.characterId);
+	const retinueSnap = await getDoc(memberRef);
 	if (retinueSnap.exists()) {
-		const retinue = retinueSnap.data();
-		if (retinue.members[character.characterId]) {
-			await updateDoc(retinueRef, {
-				members: {
-					...retinue.members,
-					[character.characterId]: {
-						id: character.characterId,
-						roles: character.roles,
-						abilities: character.abilities
-					}
-				}
-			});
-		}
+		const member = retinueSnap.data();
+		await updateDoc(memberRef, {
+			roles: character.roles || member.roles,
+			abilities: character.abilities || member.abilities
+		});
 	}
 }

@@ -1,16 +1,16 @@
-import { abilities, type Ability } from './data/abilities';
-import { roles, type Role } from '$lib/data/roles';
+import { abilities, type AbilityData } from './data/abilities';
+import { roles, type RoleData } from '$lib/data/roles';
 import { characters } from '$lib/data/characters';
 import { glimmerChart } from '$lib/data/glimmers';
 
 export interface AbilityData {
-	ability: Ability;
+	ability: AbilityData;
 	learned: boolean;
 	required: boolean;
 }
 
 export interface RoleData {
-	role: Role;
+	role: RoleData;
 	unlocked: boolean;
 }
 
@@ -26,7 +26,6 @@ export function getAllRoles(
 		const role = roles[roleId];
 		if (role.type === 'character') {
 			roleData.push({
-				unlocked: true,
 				role
 			});
 		} else {
@@ -100,7 +99,7 @@ export function getRemainingAbilities(roles: string[], learnedAbilities: string[
 		.map((abilityId) => abilities[abilityId])
 		.map((ability) => {
 			const glimmers = glimmerChart[ability.id];
-			let glimmeredFrom: { weaponType?: string; abilities: Ability[] }[] = [];
+			let glimmeredFrom: { weaponType?: string; abilities: AbilityData[] }[] = [];
 			if (glimmers) {
 				glimmeredFrom = glimmers.glimmers
 					.filter((e) => e.abilityIds.length)

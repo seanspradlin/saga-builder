@@ -1,25 +1,24 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { addMemberToRetinue } from '$lib/firestore';
+	import { firestore } from '$lib/firestore';
 	import { characters } from '$lib/data/characters';
-	import { getAbilities, type AbilityData } from '$lib/character-build';
-	import AbilitiesTable from '../AbilitiesTable.svelte';
 	import RoleSelection from '../RoleSelection.svelte';
+	import { doc, setDoc } from 'firebase/firestore';
+	import { user } from '$lib/stores/auth';
 
 	async function handleSubmit() {
-		await addMemberToRetinue($page.params.id, {
-			characterId: character,
-			roles: selectedRoles,
-			abilities: learnedAbilities
-		});
-		goto(`/retinue/${$page.params.id}`);
+		if ($user) {
+			await setDoc(doc(firestore, 'retinues', $page.params.id, 'members', character), {
+				roles: selectedRoles,
+				abilities: [],
+				owner: $user.uid
+			});
+			goto(`/retinue/${$page.params.id}`);
+		}
 	}
 	let character = '';
 	let selectedRoles: string[] = [];
-	let abilities: AbilityData[] = [];
-	let learnedAbilities: string[] = [];
-	$: abilities = getAbilities(selectedRoles);
 </script>
 
 <div class="flex w-full flex-col border-opacity-50">
@@ -43,7 +42,6 @@
 				{/each}
 			</select>
 		</label>
-		<AbilitiesTable {selectedRoles} bind:learnedAbilities />
 		<RoleSelection bind:selectedRoles />
 	</form>
 </div>

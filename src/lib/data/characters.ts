@@ -1,10 +1,12 @@
-export interface Character {
+import { Role } from './roles';
+
+export interface CharacterData {
 	id: string;
 	name: string;
 	roles: string[];
 }
 
-export const characters: Character[] = [
+export const characters: CharacterData[] = [
 	{
 		id: 'adill',
 		name: 'Adill',
@@ -386,3 +388,23 @@ export const characters: Character[] = [
 		roles: ['raider']
 	}
 ];
+
+export class Character {
+	private data: CharacterData;
+
+	constructor(public id: string) {
+		const data = characters.find((character) => character.id === id);
+		if (!data) {
+			throw new Error(`No data found for character: ${id}`);
+		}
+		this.data = data;
+	}
+
+	get name() {
+		return this.data.name;
+	}
+
+	get roles() {
+		return this.data.roles.map((roleId) => new Role(roleId));
+	}
+}
