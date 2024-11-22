@@ -3,17 +3,14 @@
 
 	export let selectedRoles: string[];
 	export let roles: Role[];
-	let selected = 0;
-
-	$: selected = selectedRoles ? roles.filter((role) => selectedRoles.includes(role.id)).length : 0;
 </script>
 
 <div class="collapse collapse-plus border-base-300 border bg-base-200">
 	<input type="checkbox" />
 	<div class="collapse-title title-xl font-medium">
 		<slot />
-		{#if selected > 0}
-			<div class="badge badge-primary">{selected}</div>
+		{#if selectedRoles.length}
+			<div class="badge badge-primary">{selectedRoles.length}</div>
 		{/if}
 	</div>
 	<div class="collapse-content">

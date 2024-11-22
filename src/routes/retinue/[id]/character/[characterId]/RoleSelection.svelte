@@ -1,7 +1,9 @@
 <script lang="ts">
 	import RoleGroup from './RoleGroup.svelte';
 	import { learnableRoles, Role } from '$lib/data/roles';
+
 	const roles = learnableRoles.map((e) => new Role(e.id));
+
 	export let selectedRoles: string[];
 </script>
 

@@ -1,5 +1,4 @@
 import { app } from '$lib/firebase';
-import { browser } from '$app/environment';
 import {
 	getFirestore,
 	connectFirestoreEmulator,
@@ -9,20 +8,15 @@ import {
 	getDocs,
 	updateDoc,
 	doc,
-	Firestore,
 	deleteDoc,
 	where,
 	query
 } from 'firebase/firestore';
 import { auth } from '$lib/auth';
 
-export let firestore: Firestore;
-
-if (browser) {
-	firestore = getFirestore(app);
-	if (window.location.hostname === 'localhost') {
-		connectFirestoreEmulator(firestore, 'localhost', 8080);
-	}
+export const firestore = getFirestore(app);
+if (window.location.hostname === 'localhost') {
+	connectFirestoreEmulator(firestore, 'localhost', 8080);
 }
 
 export async function createNewRetinue(name: string) {

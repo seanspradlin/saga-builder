@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { firestore } from '$lib/firestore';
 	import { characters } from '$lib/data/characters';
-	import RoleSelection from '../RoleSelection.svelte';
+	import RoleSelection from '../[characterId]/RoleSelection.svelte';
 	import { doc, setDoc } from 'firebase/firestore';
 	import { user } from '$lib/stores/auth';
 
@@ -42,6 +42,6 @@
 				{/each}
 			</select>
 		</label>
-		<RoleSelection bind:selectedRoles />
+		<RoleSelection />
 	</form>
 </div>

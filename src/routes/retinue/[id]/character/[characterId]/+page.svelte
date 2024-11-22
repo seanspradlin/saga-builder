@@ -1,47 +1,34 @@
 <script lang="ts">
-	import RoleSelection from '../RoleSelection.svelte';
-	import AbilitiesTable from '../AbilitiesTable.svelte';
-	import memberStore from '$lib/stores/member';
+	import RoleSelection from './RoleSelection.svelte';
+	import AbilitiesTable from './AbilitiesTable.svelte';
 	import { page } from '$app/stores';
-	import { updateMember } from '$lib/firestore';
+	import { getCharacterInfo } from './getCharacterInfo';
 
-	const member = memberStore($page.params.id, $page.params.characterId);
-	member.subscribe((value) => {
-		if (value) {
-			selectedRoles = [...value.learnableRoleIds];
-			learnedAbilities = [...value.learnedAbilityIds];
-		}
+	let abilities: string[] = [];
+	let roles: string[] = [];
+	let name: string = '';
+
+	let loading = true;
+	getCharacterInfo($page.params.id, $page.params.characterId, (data) => {
+		loading = false;
+		abilities = data.abilities;
+		roles = data.roles;
+		name = data.name;
 	});
-
-	let selectedRoles: string[] = [];
-	let learnedAbilities: string[] = [];
-
-	async function handleSubmit() {
-		const props = {
-			characterId: $page.params.characterId,
-			roles: selectedRoles,
-			abilities: learnedAbilities
-		};
-		await updateMember($page.params.id, props);
-	}
+	$: console.log(roles);
 </script>
 
-{#if !$member}
+{#if loading}
 	<p>Loading...</p>
 {:else}
-	<form on:submit={handleSubmit} class="flex flex-col gap-4">
-		<div class="flex flex-row justify-between items-center">
-			<h2 class="text-2xl font-bold">{$member.name}</h2>
-			<div class="flex flex-row gap-1 items-center">
-				<a href="/retinue/{$page.params.id}" class="btn btn-outline btn-sm">Back</a>
-				<button type="submit" class="btn btn-outline btn-sm">Save</button>
-			</div>
-		</div>
-		<hr />
-		<div class="flex flex-col-reverse lg:flex-row w-full">
-			<RoleSelection bind:selectedRoles />
-			<div class="divider divider-vertical lg:divider-horizontal" />
-			<AbilitiesTable />
-		</div>
-	</form>
+	<div class="flex flex-row justify-between items-center mb-4">
+		<h2 class="text-2xl font-bold">{name}</h2>
+		<a href="/retinue/{$page.params.id}" class="btn btn-outline btn-sm">Back</a>
+	</div>
+	<hr />
+	<div class="flex flex-col-reverse lg:flex-row w-full">
+		<RoleSelection bind:selectedRoles={roles} />
+		<div class="divider divider-vertical lg:divider-horizontal" />
+		<AbilitiesTable />
+	</div>
 {/if}

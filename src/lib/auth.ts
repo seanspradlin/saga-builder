@@ -1,4 +1,3 @@
-import { browser } from '$app/environment';
 import { app } from '$lib/firebase';
 import {
 	type Auth,
@@ -14,18 +13,14 @@ import {
 	EmailAuthProvider
 } from 'firebase/auth';
 
-export let auth: Auth;
-
 const googleAuthProvider = new GoogleAuthProvider();
 const facebookAuthProvider = new FacebookAuthProvider();
 const twitterAuthProvider = new TwitterAuthProvider();
 
-if (browser) {
-	auth = getAuth(app);
-	auth.useDeviceLanguage();
-	if (window.location.hostname === 'localhost') {
-		connectAuthEmulator(auth, 'http://localhost:9099');
-	}
+export const auth = getAuth(app);
+auth.useDeviceLanguage();
+if (window.location.hostname === 'localhost') {
+	connectAuthEmulator(auth, 'http://localhost:9099');
 }
 
 export const createUser = async (email: string, password: string) => {
